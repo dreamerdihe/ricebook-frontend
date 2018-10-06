@@ -1,0 +1,21 @@
+<div *ngFor="let follower of followers" class="frame">
+    <img class="card-img-top" src="{{follower.portrait}}">
+    <h5>{{follower.accountName}}</h5>
+    <div class="card-body">
+      <app-headline [headline]="follower.headline"></app-headline>
+      <button class="btn btn-primary my-2 my-sm-0" (click)="removeFriend(follower)" type="submit">Unfollow</button>
+    </div>
+
+</div>
+<div class = "frame row-lg-12 form-group" id="search">
+    <form class="form-inline my-2 my-lg-0" (ngSubmit) = "addfriend(addForm.dirty)" #addForm="ngForm">
+      <input class="form-control" type="text" placeholder="Add friends" [(ngModel)]="newfriendName" name="add" aria-label="Search" size=20%>
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Add</button>
+      <div *ngIf="(addForm.dirty || addForm.touched) && (newfriendName.length < 1)" class="alert alert-danger">
+        <div>
+        username is empty
+        </div>
+      </div>
+
+    </form>
+</div>

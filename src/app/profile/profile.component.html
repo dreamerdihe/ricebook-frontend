@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row col-lg-12">
+    <div class="frame col-lg-4 offset-md-1">
+      <a class="nav-link" id="mainPage" href="#/main"><u>Main Page</u></a>
+      <img src="https://pbs.twimg.com/profile_images/1012320236333355010/sLSWR8fX_400x400.jpg">
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile02">
+          <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Image</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+        </div>
+      </div>
+      <button type="reset" class="btn btn-primary" id="post">Cancel</button>
+      <button type="submit" class="btn btn-primary" id="post">Update</button>
+  </div>
+  </div>
+  <div class="row col-lg-12">
+    <div class="left-container col-lg-6">
+        <div class="frame">
+            <h1>Current Info</h1>
+            <ul class="list-group">
+                <li class="list-group-item">Account Name: {{user?.accountName}}</li>
+                <li class="list-group-item">Display Name: {{user?.displayName}}</li>
+                <li class="list-group-item">Email: {{user?.email}}</li>
+                <li class="list-group-item">Phone Number: {{user?.phoneNumber}}</li>
+                <li class="list-group-item">Date of Birth: {{user?.dateOfBirth}}</li>
+                <li class="list-group-item">Zipcode: {{user?.zipcode}}</li>
+                <li class="list-group-item">Password: {{user?.password}}</li>
+              </ul>
+          </div>
+    </div>
+    <div class="right-container col-lg-6">
+        <div class="frame">
+            <h1>Update Info</h1>
+            <form  #updateForm="ngForm" (ngSubmit) = "onSubmit(updateForm.valid)" >
+                <div class='form-group'>
+                  <label for="displayName">Display Name:</label>
+                  <input type="text" id="displayName" class="form-control" name="displayName" [(ngModel)]="displayNameText">
+                </div>
+                <div class='form-group'>
+                  <label for="email">Email Address: </label>
+                  <input type="text" id="email" class="form-control" name="email" #email=ngModel [(ngModel)]="emailText" email>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                      <div *ngIf="email?.errors.email">
+                        Please enter a valid email
+                      </div>
+                  </div>
+                </div>
+                <div class='form-group'>
+                    <label for="phoneNumber">Phone Number: </label>
+                    <input type="tel" id="phoneNumber" class="form-control" name="phoneNumber" #phoneNumber=ngModel [(ngModel)]="phoneNumberText" placeholder="012-345-6789" pattern="\d{3}-\d{3}-\d{4}">
+                    <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+                        <div *ngIf="phoneNumber?.errors.pattern">
+                          Please enter valid phone number
+                        </div>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label for="zipcode">Zipcode: </label>
+                    <input type="text" id="zipcode" class="form-control" name="zipcode" #zipcode=ngModel [(ngModel)]="zipcodeText" pattern="\d{5}$|\d{5}-\d{4}$">
+                    <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="alert alert-danger">
+                        <div *ngIf="zipcode?.errors.pattern">
+                          please enter valid zipcode
+                        </div>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label for="password">Password: </label>
+                    <input id="password" type="password" class="form-control" name="password1"  #password1=ngModel [(ngModel)]="password1Text">
+                </div>
+                <div class='form-group'>
+                    <label for="passwordConfirmation">Password Confirmation: </label>
+                    <input id="passwordConfirmation" type="password" class="form-control" name="password2" #password2=ngModel [(ngModel)]="password2Text">
+                    <div *ngIf="(password1.dirty) && (password2.pristine || password1Text != password2Text)" class="alert alert-danger">
+                        <div *ngIf="password2.pristine">
+                          Please confirm your password
+                        </div>
+                        <div *ngIf="password2.dirty && password1Text != password2Text">
+                          Your two passwords are not identical
+                        </div>
+                    </div>
+                </div>
+                <input id="timestamp" type="hidden" name="timestamp">
+                <button type="submit" class="btn btn-primary" [disabled]="(!updateForm.form.valid) || (password1.dirty) && (password2.pristine || password1Text != password2Text) ">Update Info</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </form>
+          </div>
+
+
+
+    </div>
+  </div>
+</div>

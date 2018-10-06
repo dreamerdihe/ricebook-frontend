@@ -1,0 +1,30 @@
+[
+  {
+    "portrait": "https://i.ytimg.com/vi/haoytTpv2NU/maxresdefault.jpg",
+    "accountName": "rice1",
+    "displayName": "rice1",
+    "headline": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+  },
+
+  {
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Rice_Owls_logo.svg/1200px-Rice_Owls_logo.svg.png",
+    "accountName": "rice2",
+    "displayName": "rice2",
+    "headline": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+  },
+
+  {
+    "portrait": "http://www.fullcolortransfer.com/images/2014/07/02/2010-Pres%20Rice%20Owls%20Misc%20Logo%20Iron%20On%20Sticker%20(Heat%20Transfer).png",
+    "accountName": "rice3",
+    "displayName": "rice3",
+    "headline": "when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+  },
+
+  {
+    "portrait": "https://riceowls.com/images/2017/5/1/rice-full-owl.jpg",
+    "accountName": "rice4",
+    "displayName": "rice4",
+    "headline": "It has survived not only five centuries, "
+  }
+
+]
