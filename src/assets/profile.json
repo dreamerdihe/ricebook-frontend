@@ -1,9 +1,68 @@
-{
-  "accountName": "ricebook",
-  "email": "loverice@rice.edu",
-  "phoneNumber": "123-456-7890",
-  "dateOfBirth": "1995-10-15",
-  "zipcode": "77005",
-  "password": "12345",
-  "displayName": "dreamer_he"
-}
+ [
+   {
+    "accountName": "rice",
+    "headline": "Here is ricebook",
+    "email": "loverice@rice.edu",
+    "phoneNumber": "123-456-7890",
+    "dateOfBirth": "1995-10-15",
+    "zipcode": "77005",
+    "password": "1",
+    "displayName": "rice",
+    "portrait": "https://i.ytimg.com/vi/haoytTpv2NU/maxresdefault.jpg"
+  },
+  {
+    "accountName": "mengxiao",
+    "headline": "London is a beautiful place",
+    "email": "mengxiao@sysu.edu",
+    "phoneNumber": "123-337-1234",
+    "dateOfBirth": "1996-11-19",
+    "zipcode": "77005",
+    "password": "2",
+    "displayName": "mengxiao",
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Rice_Owls_logo.svg/1200px-Rice_Owls_logo.svg.png"
+  },
+  {
+    "accountName": "mack",
+    "headline": "Here is COMP531",
+    "email": "mack@rice.edu",
+    "phoneNumber": "832-779-9090",
+    "dateOfBirth": "1980-3-22",
+    "zipcode": "77005",
+    "password": "3",
+    "displayName": "mack",
+    "portrait": "http://www.fullcolortransfer.com/images/2014/07/02/2010-Pres%20Rice%20Owls%20Misc%20Logo%20Iron%20On%20Sticker%20(Heat%20Transfer).png"
+  },
+  {
+    "accountName": "yuan",
+    "headline": "Here is YuanHE",
+    "email": "yuan@rice.edu",
+    "phoneNumber": "666-666-6666",
+    "dateOfBirth": "1995-10-15",
+    "zipcode": "77005",
+    "password": "4",
+    "displayName": "dreamer_he",
+    "portrait": "https://riceowls.com/images/2017/5/1/rice-full-owl.jpg"
+  },
+  {
+    "accountName": "sysu",
+    "headline": "Here is sysu",
+    "email": "SYSU@sysu.edu",
+    "phoneNumber": "334-345-1256",
+    "dateOfBirth": "1997-5-22",
+    "zipcode": "77005",
+    "password": "4",
+    "displayName": "sysu",
+    "portrait": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Rice_Owls_logo.svg/1200px-Rice_Owls_logo.svg.png"
+  },
+  {
+    "accountName": "hahah",
+    "headline": "Laugh with me",
+    "email": "hahah@gmail.edu",
+    "phoneNumber": "123-444-5678",
+    "dateOfBirth": "1992-4-27",
+    "zipcode": "77005",
+    "password": "4",
+    "displayName": "hahah",
+    "portrait": "https://riceowls.com/images/2017/5/1/rice-full-owl.jpg"
+  }
+]

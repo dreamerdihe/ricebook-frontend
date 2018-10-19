@@ -3,12 +3,12 @@
     <div id="profile">
       <app-self></app-self>
     </div>
-    <app-following></app-following>
+    <app-following [followers]='followings' [currentUser]='currentUser' (add)='addFriend($event)' (delete)='removeFriend($event)'></app-following>
   </div>
 
   <div class='right-container col-sm-9'>
     <div id="posts">
-      <app-posts></app-posts>
+      <app-posts [followers]='followings' [length]='followings.length' [accountName]='currentUser.accountName'></app-posts>
     </div>
   </div>
 </div>

@@ -1,6 +1,9 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from '../../profile/profile.service';
 
+import { User } from '../../user';
+import { async } from 'q';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,14 +12,34 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  isLogin: boolean;
+  isSubmit = false;
+  regisertedUsers = {};
+  user: User;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private profileService: ProfileService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   onSubmit(valid) {
     if (valid) {
-      this.router.navigate(['/main']);
+      this.login(this.username, this.password);
     }
+    this.isSubmit = true;
+  }
+
+  login(username: string, password: string): Promise<boolean> {
+    return this.profileService.login(username, password)
+    .then((isLogin) => {
+      if (isLogin) {
+        this.isLogin = true;
+        setTimeout(() => {
+          this.router.navigate(['/main']);
+          }, 500);
+      } else  {
+        this.isLogin = false;
+      }
+      return this.isLogin;
+    });
   }
 }

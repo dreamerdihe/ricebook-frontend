@@ -1,7 +1,7 @@
 <div class="frame">
   <h3>New Post</h3>
     <div id="mypost">
-        <form (ngSubmit)="newPost(post.dirty)" #post=ngForm>
+        <form (ngSubmit)="Post(post.dirty)" #post=ngForm>
           <textarea id="newPost" name="newPost" rows="5" cols="50" [(ngModel)]="newText" placeholder="What's on your mind?........."></textarea>
           <br>
           <div class="input-group mb-3" id="img">
@@ -20,10 +20,11 @@
 </div>
 <div class = "frame" id="search">
   <form class="form-inline my-2 my-lg-0" (ngSubmit)="search()" #seachForm="ngForm">
-    <input class="form-control mr-sm-2" type="search"  name="search" placeholder="Search" [(ngModel)]="searchFor" aria-label="Search" size=100%>
+    <input class="form-control mr-sm-2" type="search"  name="search" id='searchFilter' placeholder="Search" [(ngModel)]="searchFor" aria-label="Search" size=95%>
     <button *ngIf="isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
     <button *ngIf="!isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Back</button>
   </form>
+  <span id='keyword'>searching for {{searchFor}}</span>
 </div>
 
 <div *ngIf="!isSearch" class="row">
@@ -36,9 +37,17 @@
         <p class="card-text">{{result.text}}</p>
         <p><b>Time</b>: {{result.time}}</p>
         <p><b>Author</b>: {{result.author}}</p>
-        <a href="#" class="btn btn-primary">Edit</a>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              commenets
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div *ngFor="let comment of result.comment" class="dropdown-item" >{{comment}}</div>
+              <button  class="btn btn-primary">Comment</button>
+            </div>
+          </div>
+        <button class="btn btn-primary">Edit</button>
         <br/>
-        <a href="#" class="btn btn-primary">Comment</a>
       </div>
      </div>
   </div>
@@ -54,9 +63,17 @@
         <p class="card-text">{{post.text}}</p>
         <p><b>Time</b>: {{post.time}}</p>
         <p><b>Author</b>: {{post.author}}</p>
-        <a href="#" class="btn btn-primary">Edit</a>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              commenets
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div *ngFor="let comment of post.comment" class="dropdown-item" >{{comment}}</div>
+              <button  class="btn btn-primary">Comment</button>
+            </div>
+          </div>
+        <button  class="btn btn-primary">Edit</button>
         <br/>
-        <a href="#" class="btn btn-primary">Comment</a>
       </div>
     </div>
 </div>

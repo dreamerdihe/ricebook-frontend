@@ -17,11 +17,14 @@ export class ProfileComponent implements OnInit {
   password1Text: string;
   password2Text: string;
   birthRestrict: Date;
-  constructor(private profileService: ProfileService, private router: Router) { }
 
-  ngOnInit() {
-    this.getProfile();
-  }
+  constructor(private profileService: ProfileService, private router: Router) {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    this.user = new User(user['accountName'], user['email'], user['phoneNumber'],
+    user['dateOfBirth'], user['zipcode'], user['password'], user['displayName'], user['headline'], user['portrait']);
+   }
+
+  ngOnInit() { }
 
   onSubmit(valid) {
     if (valid) {
@@ -40,13 +43,8 @@ export class ProfileComponent implements OnInit {
       if (this.password2Text && this.password2Text.length > 0) {
         this.user.password = this.password2Text;
       }
+      localStorage.setItem('currentUser', JSON.stringify(this.user));
     }
 
-  }
-
-  getProfile() {
-    this.profileService.getProfile()
-        .subscribe((profile: User) => this.user = new User(profile['accountName'], profile['email'], profile['phoneNumber'],
-        profile['dateOfBirth'], profile['zipcode'], profile['password'], profile['displayName']));
   }
 }

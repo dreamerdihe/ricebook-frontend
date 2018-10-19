@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { User } from '../../user';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
-
+import { ProfileService } from '../../profile/profile.service';
 @Component({
   selector: 'app-registeration',
   templateUrl: './registeration.component.html',
@@ -15,20 +14,27 @@ export class RegisterationComponent implements OnInit {
   phoneNumberText: string;
   dateOfBirthText: string;
   zipcodeText: string;
-  user: User;
   password1Text: string;
   password2Text: string;
   birthRestrict: Date;
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private profileService: ProfileService) {}
 
   ngOnInit() {
   }
 
   onSubmit(valid) {
     if (valid) {
-      this.user = new User(this.accountNameText, this.emailText, this.phoneNumberText,
-        this.dateOfBirthText, this.zipcodeText, this.displayNameText);
-        this.router.navigate(['/main']);
+      // this.register(this.accountNameText, this.emailText, this.phoneNumberText,
+      //               this.dateOfBirthText, this.zipcodeText, this.password2Text, this.displayNameText);
+      alert('registration success');
+        // this.router.navigate(['/main']);
     }
   }
+
+  // register(accountName, email, phoneNumber, dateOfBirth,
+  //          zipcode, password, displayName) {
+  //           this.profileService.register(new User(accountName, email, phoneNumber, dateOfBirth,
+  //           zipcode, password, displayName));
+  // }
 }

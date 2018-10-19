@@ -14,12 +14,23 @@
       <label for="upass">Password: </label>
       <input type="password" id="upass" class="form-control" name="upass" [(ngModel)]="password" #upass=ngModel required>
       <div *ngIf="upass.invalid && (upass.dirty || upass.touched)" class="alert alert-danger">
-          <div *ngIf="upass?.errors.required">
+        <div *ngIf="upass?.errors.required">
             Password is required.
-          </div>
         </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Log in</button>
+    <button type="submit" class="btn btn-primary" id='submit'>Log in</button>
+    <div *ngIf="isSubmit">
+      <div *ngIf="isLogin !== undefined">
+          <div *ngIf="!isLogin" class="alert alert-danger" id="login-error">
+              The username or password is incorrect
+            </div>
+            <div *ngIf="isLogin" class="alert alert-success" id="login-success">
+              welcome {{username}}!
+            </div>
+      </div>
+
+    </div>
   </form>
 </div>
 

@@ -7,6 +7,7 @@ import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
   selector: '[date]',
   providers: [{provide: NG_VALIDATORS, useExisting: IsValidBirthDay, multi: true}]
 })
+
 export class IsValidBirthDay implements Validator {
 
   validate(control: AbstractControl): {[key: string]: any} | null {

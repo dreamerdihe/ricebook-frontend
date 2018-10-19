@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, OnChanges, SimpleChange} from '@angular/core';
 import { Follower } from '../follower';
 import { FollowingService } from './following.service';
-// import { Location } from '@angular/common';
+import { User } from '../../user';
+import { ProfileService } from '../../profile/profile.service';
 
 @Component({
   selector: 'app-following',
@@ -10,32 +11,41 @@ import { FollowingService } from './following.service';
 })
 export class FollowingComponent implements OnInit {
   newfriendName: string;
-  followers: Follower[] = [];
-  constructor(private followerService: FollowingService) { }
+  @Input() followers: Follower[] = [];
+  @Input() currentUser: User;
+  @Output() add = new EventEmitter<Follower>();
+  @Output() delete = new EventEmitter<Follower>();
+  addStatus = 0;
+  changeLog: string[] = [];
 
-  ngOnInit() {
-    this.getFollwer();
-  }
+  constructor(private followingService: FollowingService, private profileService: ProfileService) {}
 
-  getFollwer() {
-    this.followerService.getFollower()
-        .subscribe((followers: Follower[]) => {
-          for (const fol of followers) {
-            this.followers.push(new Follower(fol['portrait'], fol['accountName'],
-              fol['headline'], fol['displayName']));
-          }
-        });
-  }
+  ngOnInit() {}
 
   addfriend(valid) {
     if (valid && this.newfriendName.length > 0) {
-      this.followers.push(new Follower('https://ricetennisclub.tennisbookings.com/Static/I/Logos/rice-264.png',
-                          this.newfriendName, 'adds name to list with arbitrary headline and avatar'));
+      this.profileService.search(this.newfriendName)
+      .then((res) => {
+        if (res) {
+          if (this.currentUser.accountName === res.accountName || this.currentUser.displayName === res.displayName) {
+            return this.addStatus = -3;
+          }
+          for (const follower of this.followers) {
+            if (follower.accountName === res.accountName) {
+              return this.addStatus = -2;
+            }
+          }
+          const newFollowing = new Follower(res.portrait, res.accountName, res.headline, res.displayName);
+          this.add.emit(newFollowing);
+          return this.addStatus = 1;
+        } else {
+          return this.addStatus = -1;
+        }
+      });
     }
   }
 
   removeFriend(follower: Follower) {
-    const index = this.followers.indexOf(follower);
-    this.followers.splice(index, 1);
+    this.delete.emit(follower);
   }
 }

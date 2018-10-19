@@ -1,25 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AuthComponent } from './auth.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterationComponent } from './registeration/registeration.component';
+import { ProfileService } from '../profile/profile.service';
 describe('AuthComponent', () => {
   let component: AuthComponent;
   let fixture: ComponentFixture<AuthComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      declarations: [ AuthComponent, RegisterationComponent, LoginComponent ],
+      imports: [ RouterTestingModule, FormsModule, HttpClientTestingModule ],
+      providers: [ProfileService]
     })
-    .compileComponents();
-  }));
+    .compileComponents().then();
+  });
 
   beforeEach(() => {
+
     fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('auth should create', () => {
     expect(component).toBeTruthy();
   });
 });
