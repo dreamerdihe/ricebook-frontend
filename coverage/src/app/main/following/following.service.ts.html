@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">96% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/13</span>
+        <span class='fraction'>24/25</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">54.84% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>17/31</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/11</span>
+        <span class='fraction'>20/20</span>
       </div>
     </div>
     <p class="quiet">
@@ -75,43 +75,43 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of, Subject } from 'rxjs';
-import { Follower } from '../follower';
-import { User } from '../../user';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable } from<span class="branch-1 cbranch-no" title="branch not covered" > '@angular/core'</span>;
+import { HttpClient } from '@angular/common/http';<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+impo<span class="missing-if-branch" title="if path not taken" >I</span>rt { Observable, of, Subject } from 'rxjs';<span class="cstat-no" title="statement not covered" ></span>
+import { Follower } from '../follower';<span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
+import { User } from<span class="branch-1 cbranch-no" title="branch not covered" > '</span>../<span class="branch-2 cbranch-no" title="branch not covered" >../user';</span>
 import { map } from 'rxjs/operators';
-&nbsp;
-@Injectable({
+<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+@Inj<span class="missing-if-branch" title="else path not taken" >E</span>ectable({
   providedIn: 'root'
 })
 export class FollowingService {
@@ -126,10 +126,10 @@ export class FollowingService {
     return this.http.get&lt;any&gt;(this.configUrl)
     .pipe(map(followingsArray =&gt; {
         for (const followings of followingsArray) {
-          <span class="missing-if-branch" title="else path not taken" >E</span>if (followings['accountName'] === accountName) {
+          if (followings['accountName'] === accountName) {
             return followings['followings'];
           }
-        }
+        }<span class="missing-if-branch" title="else path not taken" >E</span>
       }));
   }
 }
@@ -139,7 +139,7 @@ export class FollowingService {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 12:08:00 GMT-0500 (CDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 13:45:28 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
