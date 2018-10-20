@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80.43% </span>
+        <span class="strong">76.47% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>37/46</span>
+        <span class='fraction'>26/34</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.29% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>19/35</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">69.23% </span>
+        <span class="strong">63.64% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>9/13</span>
+        <span class='fraction'>7/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80.49% </span>
+        <span class="strong">72.41% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>33/41</span>
+        <span class='fraction'>21/29</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,14 +105,11 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,9 +117,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -130,17 +124,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -155,6 +150,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -164,14 +160,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable, OnIni<span class="branch-1 cbranch-no" title="branch not covered" >t } from '@angul</span>ar/core';
-import { User } from '../user';<span class="branch-1 cbranch-no" title="branch not covered" ></span>
-impo<span class="missing-if-branch" title="if path not taken" >I</span>rt { Follower } from '../main/follower';<span class="cstat-no" title="statement not covered" ></span>
-import { HttpClient } from '@angular/common/http';<span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
-import { Observable <span class="branch-1 cbranch-no" title="branch not covered" >} </span>fro<span class="branch-2 cbranch-no" title="branch not covered" >m 'rxjs';</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Injectable, OnInit } from '@angular/core';
+import { User } from '../user';
+import { Follower } from '../main/follower';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { FollowingService } from '../main/following/following.service';
-import { PostsService } fr<span class="branch-1 cbranch-no" title="branch not covered" >om '../main/post</span>s/posts.service';
-<span class="missing-if-branch" title="else path not taken" >E</span>
+import { PostsService } from '../main/posts/posts.service';
+&nbsp;
 @Injectable({
   providedIn: 'root'
 })
@@ -180,14 +180,14 @@ export class ProfileService {
   isLogin = false;
   constructor(private http: HttpClient, private followingService: FollowingService, private postsService: PostsService) {}
 &nbsp;
-  getProfile(): Observable&lt;User&gt; {
-    return this.http.get&lt;User&gt;(this.configUrl);
+<span class="fstat-no" title="function not covered" >  getProfile(): Observable&lt;User&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return this.http.get&lt;User&gt;(this.configUrl);</span>
   }
 &nbsp;
   getFollower(accountName: string) {
     this.followingService.getFollower(accountName).subscribe((followings) =&gt; {
-      const fols = [];<span class="fstat-no" title="function not covered" ></span>
-      fo<span class="cstat-no" title="statement not covered" >r (const following of followings) {</span>
+      const fols = [];
+      for (const following of followings) {
         fols.push(new Follower(following['portrait'], following['accountName'],
                                           following['headline'], following['displayName']));
       }
@@ -200,36 +200,36 @@ export class ProfileService {
     .then((res) =&gt; res.json())
     .then(data =&gt; {
       for (let i = 0; i &lt; data.length; i ++) {
-        if (username === data[i]['accountName'] &amp;&amp; password === data[i]['password']) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (username === data[i]['accountName'] &amp;&amp; password === data[i]['password']) {
           localStorage.setItem('currentUser', JSON.stringify(data[i]));
           this.getFollower(username);
           return true;
         }
-      }<span class="missing-if-branch" title="else path not taken" >E</span>
-      return false;
+      }
+<span class="cstat-no" title="statement not covered" >      return false;</span>
     });
   }
 &nbsp;
-  search(username: string): Promise&lt;Follower&gt; {
-    return f<span class="cstat-no" title="statement not covered" >etch(this.conf</span>igUrl)
-    .then((res) =&gt; res.json())
-    .then(data =&gt; {
-      for (let i = 0; i &lt; data.length;<span class="fstat-no" title="function not covered" > i</span> ++) {
+<span class="fstat-no" title="function not covered" >  search(</span>username: string): Promise&lt;Follower&gt; {
+<span class="cstat-no" title="statement not covered" >    return fetch(this.configUrl)</span>
+    .then(<span class="fstat-no" title="function not covered" >(</span>res) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
+    .then(<span class="fstat-no" title="function not covered" >data =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      for (let i = 0; i &lt; data.length; i ++) {</span>
 <span class="cstat-no" title="statement not covered" >        if (username === data[i]['accountName']) {</span>
-          return n<span class="fstat-no" title="function not covered" >ew</span> Follower(data[<span class="cstat-no" title="statement not covered" >i]['portrait'], dat</span>a[i]['accountName'], data[i]['headline'], data[i]['displayName']);
-        }<span class="fstat-no" title="function not covered" ></span>
-      }<span class="cstat-no" title="statement not covered" ></span>
-      return und<span class="cstat-no" title="statement not covered" >efined;</span>
-    });<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >          return new Follower(data[i]['portrait'], data[i]['accountName'], data[i]['headline'], data[i]['displayName']);</span>
+        }
+      }
+<span class="cstat-no" title="statement not covered" >      return undefined;</span>
+    });
   }
 }
-<span class="cstat-no" title="statement not covered" ></span></pre></td></tr>
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 13:45:28 GMT-0500 (CDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Oct 19 2018 23:16:11 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

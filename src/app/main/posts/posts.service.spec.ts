@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { PostsService } from './posts.service';
 import { Article } from './article';
 import { Follower } from '../follower';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PostsService', () => {
   let fols;
@@ -40,9 +40,14 @@ describe('PostsService', () => {
     expect(service).toBeTruthy();
   });
 
+  // it('Test Article: should fetch articles for current logged in user', () => {
+  //   service.getArticles(followings).subscribe((articles: Article[]) => {
+  //     expect(articles.length).toBe(2);
+  //   });
+  // });
+
   it('Test Article: should fetch articles for current logged in user', () => {
     service.getArticles(followings).subscribe((articles: Article[]) => {
-      expect(3).toBe(2);
       expect(articles.length).toBe(2);
     });
   });
@@ -51,6 +56,13 @@ describe('PostsService', () => {
     followings.push(new Follower('', 'sysu', 'Here is sysu', 'sysu'));
     service.getArticles(followings).subscribe((articles: Article[]) => {
       expect(articles.length).toBe(5);
+    });
+  });
+
+  it('should remove articles when removing a follower', () => {
+    followings.pop();
+    service.getArticles(followings).subscribe((articles: Article[]) => {
+    expect(articles.length).toBe(2);
     });
   });
 });

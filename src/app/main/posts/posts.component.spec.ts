@@ -31,6 +31,8 @@ describe('PostsComponent', () => {
 
   it('should update the search keyword', () => {
     component.searchFor = 'rice';
+    component.isSearch = true;
+    component.search();
     const complied = fixture.debugElement.nativeElement;
     fixture.detectChanges();
     expect(complied.querySelector('#keyword').textContent).toEqual('searching for rice');

@@ -12,6 +12,7 @@ export class PostsComponent implements OnChanges {
   @Input() followers: Follower[];
   @Input() length: number;
   @Input() accountName: string;
+  keyword: string;
   myArticles = 0;
   articles: Article[] = [];
   newText: string;
@@ -61,6 +62,7 @@ export class PostsComponent implements OnChanges {
 
   search() {
     if (this.isSearch) {
+      this.keyword = this.searchFor;
       for (const article of this.articles) {
         if (article.author.indexOf(this.searchFor) !== -1 || article.text.indexOf(this.searchFor) !== -1) {
           this.searchResults.push(article);

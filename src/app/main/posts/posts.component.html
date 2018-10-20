@@ -24,7 +24,7 @@
     <button *ngIf="isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
     <button *ngIf="!isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Back</button>
   </form>
-  <span id='keyword'>searching for {{searchFor}}</span>
+  <span *ngIf='!isSearch && keyword != null && keyword.length > 0' id='keyword'>searching for {{keyword}}</span>
 </div>
 
 <div *ngIf="!isSearch" class="row">
