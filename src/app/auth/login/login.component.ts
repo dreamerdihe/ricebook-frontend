@@ -4,6 +4,7 @@ import { ProfileService } from '../../profile/profile.service';
 
 import { User } from '../../user';
 import { async } from 'q';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,9 +29,9 @@ export class LoginComponent implements OnInit {
     this.isSubmit = true;
   }
 
-  login(username: string, password: string): Promise<boolean> {
+  login(username: string, password: string) {
     return this.profileService.login(username, password)
-    .then((isLogin) => {
+    .subscribe((isLogin: boolean) => {
       if (isLogin) {
         this.isLogin = true;
         setTimeout(() => {
@@ -39,7 +40,6 @@ export class LoginComponent implements OnInit {
       } else  {
         this.isLogin = false;
       }
-      return this.isLogin;
     });
   }
 }

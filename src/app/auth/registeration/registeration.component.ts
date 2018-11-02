@@ -1,5 +1,4 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { User } from '../../user';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../profile/profile.service';
 @Component({
@@ -25,16 +24,8 @@ export class RegisterationComponent implements OnInit {
 
   onSubmit(valid) {
     if (valid) {
-      // this.register(this.accountNameText, this.emailText, this.phoneNumberText,
-      //               this.dateOfBirthText, this.zipcodeText, this.password2Text, this.displayNameText);
       alert('registration success');
-        // this.router.navigate(['/main']);
     }
   }
 
-  // register(accountName, email, phoneNumber, dateOfBirth,
-  //          zipcode, password, displayName) {
-  //           this.profileService.register(new User(accountName, email, phoneNumber, dateOfBirth,
-  //           zipcode, password, displayName));
-  // }
 }
