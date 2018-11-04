@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { User } from '../user';
 import { Follower } from '../main/follower';
 import { HttpClient } from '@angular/common/http';
@@ -12,9 +12,26 @@ import { map } from 'rxjs/operators';
 })
 export class ProfileService {
   configUrl = '../../../assets/profile.json';
-  loginUrl = 'http://localhost:3000/login';
+  backendUrl = 'http://localhost:3000';
   isLogin = false;
   constructor(private http: HttpClient, private followingService: FollowingService, private postsService: PostsService) {}
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(this.backendUrl + '/login', {username: username, password: password}, { withCredentials: true })
+            .pipe(map(res => {
+              if (res) {
+                localStorage.setItem('currentUser', JSON.stringify(res['user']));
+                this.getFollower(username);
+                return true;
+              } else {
+                return false;
+              }
+            }));
+  }
+
+  logout() {
+    return this.http.put<any>(this.backendUrl + '/logout', {}, { withCredentials: true });
+  }
 
   getProfile(): Observable<User> {
     return this.http.get<User>(this.configUrl);
@@ -29,19 +46,6 @@ export class ProfileService {
       }
       localStorage.setItem('currentFollowers', JSON.stringify(fols));
     });
-  }
-
-  login(username: string, password: string): Observable<boolean> {
-    return this.http.post<boolean>(this.loginUrl, {username: username, password: password})
-            .pipe(map(res => {
-              if (res) {
-                localStorage.setItem('currentUser', JSON.stringify(res['user']));
-                this.getFollower(username);
-                return true;
-              } else {
-                return false;
-              }
-            }));
   }
 
   search(username: string): Promise<Follower> {

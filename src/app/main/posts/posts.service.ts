@@ -12,7 +12,7 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   getArticles(followings: Follower[]): Observable<Article[]> {
-    return this.http.get<Article[]>(this.configUrl)
+    return this.http.get<Article[]>(this.configUrl, { withCredentials: true })
     .pipe(map(articles => {
       const res = [];
       for (const article of articles) {

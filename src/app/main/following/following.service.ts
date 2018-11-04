@@ -17,7 +17,7 @@ export class FollowingService {
   constructor(private http: HttpClient) {}
 
   getFollower(accountName: string): Observable<Follower[]> {
-    return this.http.get<any>(this.configUrl)
+    return this.http.get<any>(this.configUrl, { withCredentials: true })
     .pipe(map(followingsArray => {
         for (const followings of followingsArray) {
           if (followings['accountName'] === accountName) {

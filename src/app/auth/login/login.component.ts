@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { ProfileService } from '../../profile/profile.service';
 
 import { User } from '../../user';
-import { async } from 'q';
-import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
