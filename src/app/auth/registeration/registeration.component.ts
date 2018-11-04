@@ -1,6 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { ProfileService } from '../../profile/profile.service';
+import { Component, OnInit } from '@angular/core';
+import { RegisterationService} from './registeration.service';
+import { HttpBackend } from '@angular/common/http';
 @Component({
   selector: 'app-registeration',
   templateUrl: './registeration.component.html',
@@ -17,15 +17,23 @@ export class RegisterationComponent implements OnInit {
   password2Text: string;
   birthRestrict: Date;
 
-  constructor(private router: Router, private profileService: ProfileService) {}
+  constructor(private registerService: RegisterationService) {}
 
   ngOnInit() {
   }
 
   onSubmit(valid) {
     if (valid) {
-      alert('registration success');
+      this.registerService.register(this.accountNameText, this.emailText, this.phoneNumberText,
+        this.dateOfBirthText, this.zipcodeText, this.password2Text)
+        .subscribe(res => {
+        if (res['result'] === 'success') {
+          alert('registration success');
+        }
+        if (res['result'] === 'username duplicate') {
+          alert('username has been token');
+        }
+      });
     }
   }
-
 }
