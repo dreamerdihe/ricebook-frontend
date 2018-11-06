@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileService } from '../../profile/profile.service';
+import { LoginService } from './login.service';
 
 import { User } from '../../user';
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   regisertedUsers = {};
   user: User;
 
-  constructor(private router: Router, private profileService: ProfileService) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   ngOnInit() {}
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(username: string, password: string) {
-    return this.profileService.login(username, password)
+    return this.loginService.login(username, password)
     .subscribe((isLogin: boolean) => {
       if (isLogin) {
         this.isLogin = true;

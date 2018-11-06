@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../profile/profile.service';
-import { User } from '../../user';
+import { SelfService } from './self.service';
 
 @Component({
   selector: 'app-self',
@@ -9,25 +8,31 @@ import { User } from '../../user';
 })
 export class SelfComponent implements OnInit {
   headline: string;
-  currentUser: User;
-  constructor(private profileService: ProfileService) {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    this.currentUser = new User(user['accountName'], user['email'], user['phoneNumber'],
-    user['dateOfBirth'], user['zipcode'], user['password'], user['displayName'], user['headline'], user['portrait']);
-  }
+  headlineText: String;
+  username: String;
+  avatar = '';
+  constructor(private selfService: SelfService) { }
 
   ngOnInit() {
+    this.selfService.getHeadline().subscribe((res) => {
+      this.username = res.username;
+      this.headline = res.headline;
+    });
+    this.selfService.getAvatar().subscribe((res) => {
+      this.avatar = res.avatar;
+    });
   }
 
-  addHeadline(valid) {
+  updateHeadline(valid) {
     if (valid) {
-      this.currentUser.headline = this.headline;
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.selfService.updateHeadline(this.headlineText).subscribe((res) => {
+        this.headline = res.headline;
+      });
     }
   }
 
   logout() {
-    this.profileService.logout()
+    this.selfService.logout()
     .subscribe(res => {
       console.log(res);
       localStorage.clear();

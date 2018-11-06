@@ -1,29 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Article } from './article';
-import { Follower } from '../follower';
-import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-  configUrl = '../../../assets/articles.json';
+  backendUrl = 'http://localhost:3000/';
   constructor(private http: HttpClient) {}
 
-  getArticles(followings: Follower[]): Observable<Article[]> {
-    return this.http.get<Article[]>(this.configUrl, { withCredentials: true })
-    .pipe(map(articles => {
-      const res = [];
-      for (const article of articles) {
-        for (const following of followings) {
-          if (article.author === following.accountName || article.author === following.displayName) {
-            res.push(article);
-          }
-        }
-      }
-      return res;
-    })
-    );
+  getPosts(): Observable<any> {
+    return this.http.get<any>(this.backendUrl + 'articles', {withCredentials: true});
+  }
+
+  postPost(text: String): Observable<any> {
+    return this.http.post<any>(this.backendUrl + 'article', {text: text}, {withCredentials: true});
   }
 }

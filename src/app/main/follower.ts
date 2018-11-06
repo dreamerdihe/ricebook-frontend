@@ -1,14 +1,16 @@
 export class Follower {
-  public portrait: string;
-  public accountName: string;
-  public headline: string;
-  public displayName?: string;
+  public portrait: String;
+  public accountName: String;
+  public headline: String;
+  public id?: String;
+  public displayName?: String;
 
-  constructor(portrait: string, accountName: string, headline: string,
-              displayName?: string) {
+  constructor(portrait: String, accountName: String, headline: String, id?: String,
+              displayName?: String) {
               this.portrait = portrait;
               this.accountName = accountName;
               this.headline = headline;
+              this.id = id;
               this.displayName = displayName;
               }
 }

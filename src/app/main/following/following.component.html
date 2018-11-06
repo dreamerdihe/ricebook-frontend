@@ -1,8 +1,8 @@
 <div *ngFor="let follower of followers" class="frame">
-    <img class="card-img-top" src="{{follower.portrait}}">
-    <h5>{{follower.accountName}}</h5>
+    <img class="card-img-top" src="{{follower?.portrait}}">
+    <h5>{{follower?.accountName}}</h5>
     <div class="card-body">
-      <app-headline [headline]="follower.headline"></app-headline>
+      <app-headline [headline]="follower?.headline"></app-headline>
       <button class="btn btn-primary my-2 my-sm-0" (click)="removeFriend(follower)" type="submit">Unfollow</button>
     </div>
 

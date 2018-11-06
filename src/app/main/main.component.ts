@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Follower } from './follower';
 import { User } from '../user';
+import { MainService } from './main.service';
 
 @Component({
   selector: 'app-main',
@@ -9,31 +10,47 @@ import { User } from '../user';
 })
 export class MainComponent implements OnInit {
   followings: Follower[] = [];
-  currentUser: User;
-  constructor() {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    this.currentUser = new User(user['accountName'], user['email'], user['phoneNumber'],
-    user['dateOfBirth'], user['zipcode'], user['password'], user['displayName'], user['headline'], user['portrait']);
+  username: String;
+  constructor(private mainService: MainService) {
   }
 
   ngOnInit() {
-    const fols = JSON.parse(localStorage.getItem('currentFollowers'));
-    for (const fol of fols) {
-      this.followings.push(new Follower(fol['portrait'], fol['accountName'],
-      fol['headline'], fol['displayName']));
-    }
+    this.mainService.getFollowing().subscribe((res) => {
+      this.username = res.username;
+      const ids = res.following;
+      this.getFollowing(ids);
+    });
   }
 
   addFriend(newFriend: Follower) {
-    this.followings.push(newFriend);
-    localStorage.removeItem('currentFollowers');
-    localStorage.setItem('currentFollowers', JSON.stringify(this.followings));
+    this.mainService.addFollowing(newFriend.id).subscribe((res) => {
+      const ids = res.following;
+      this.getFollowing(ids);
+    });
   }
 
   removeFriend(deletFriend: Follower) {
-    const index = this.followings.indexOf(deletFriend);
-    this.followings.splice(index, 1);
-    localStorage.removeItem('currentFollowers');
-    localStorage.setItem('currentFollowers', JSON.stringify(this.followings));
+    this.mainService.deleteFollowing(deletFriend.id).subscribe((res) => {
+      const ids = res.following;
+      this.getFollowing(ids);
+    });
+  }
+
+  getFollowing(ids: String[]) {
+    this.followings = [];
+    if (ids.length > 0) {
+      this.mainService.getHeadlines(ids).subscribe((resHealines) => {
+        this.mainService.getAvatar(ids).subscribe((resAvatars) => {
+          console.log(resHealines);
+          console.log(resAvatars);
+          console.log(ids);
+          const headlines = resHealines.headlines;
+          const avatars = resAvatars.avatar;
+          for (let i = 0; i < headlines.length; i++) {
+            this.followings.push(new Follower(avatars[i].avatar, avatars[i].username, headlines[i]. headline, ids[i]));
+          }
+        });
+      });
+    }
   }
 }

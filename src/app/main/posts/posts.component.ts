@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { Article } from './article';
 import { PostsService } from './posts.service';
 import { Follower } from '../follower';
@@ -14,7 +14,7 @@ export class PostsComponent implements OnChanges {
   @Input() accountName: string;
   keyword: string;
   myArticles = 0;
-  articles: Article[] = [];
+  articles: any[] = [];
   newText: string;
   isSearch = true;
   searchFor: string;
@@ -23,48 +23,29 @@ export class PostsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    this.getPosts();
+    this.getPosts_();
   }
 
-  getPosts() {
-    this.postService.getArticles(this.followers)
-        .subscribe((articles: Article[]) => {
-          this.articles = [];
-          let myArticlesJS = localStorage.getItem('myArticles');
-
-          if (myArticlesJS) {
-            myArticlesJS = JSON.parse(myArticlesJS);
-            for (const article of myArticlesJS) {
-              this.articles.push(new Article(article['author'], article['text'], article['img'], article['time'], article['comment']));
-            }
-          }
-          for (const art of articles) {
-            const day = new Date(art['time']);
-            const time = day.toUTCString();
-            this.articles.push(new Article(art['author'], art['text'], art['img'], time, art['comment']));
-          }
-        });
+  getPosts_() {
+    this.postService.getPosts().subscribe((res) => {
+      this.articles = res.articles;
+    });
   }
 
   Post(dirty) {
     if (dirty) {
-      const now = Date.now();
-      const nowDate = new Date(now);
-      const time = nowDate.toUTCString();
-      const newArticle = new Article(this.accountName, this.newText, '', time);
-      this.articles.unshift(newArticle);
-      this.myArticles += 1;
-      console.log(this.articles.slice(0, this.myArticles));
-      localStorage.removeItem('myArticles');
-      localStorage.setItem('myArticles', JSON.stringify(this.articles.slice(0, this.myArticles)));
+      this.postService.postPost(this.newText).subscribe((res) => {
+        this.articles = res.articles;
+      });
     }
   }
 
   search() {
+    this.searchResults = [];
     if (this.isSearch) {
       this.keyword = this.searchFor;
       for (const article of this.articles) {
-        if (article.author.indexOf(this.searchFor) !== -1 || article.text.indexOf(this.searchFor) !== -1) {
+        if (article.author.username.indexOf(this.searchFor) !== -1 || article.body.indexOf(this.searchFor) !== -1) {
           this.searchResults.push(article);
         }
       }
@@ -73,6 +54,5 @@ export class PostsComponent implements OnChanges {
       this.isSearch = true;
       this.searchFor = null;
     }
-
   }
 }

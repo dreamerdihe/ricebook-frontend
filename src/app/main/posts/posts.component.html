@@ -30,19 +30,19 @@
 <div *ngIf="!isSearch" class="row">
   <div *ngFor="let result of searchResults" class="col-lg-3">
     <div class="post">
-      <div *ngIf="result.img" class= 'pic'>
-        <img class="card-img-top" src="{{result.img}}">
+      <div *ngIf="result.picture" class= 'pic'>
+        <img class="card-img-top" src="{{result.picture}}">
       </div>
       <div class="card-body">
-        <p class="card-text">{{result.text}}</p>
-        <p><b>Time</b>: {{result.time}}</p>
-        <p><b>Author</b>: {{result.author}}</p>
+        <p class="card-text">{{result.body}}</p>
+        <p><b>Time</b>: {{result.date}}</p>
+        <p><b>Author</b>: {{result.author.username}}</p>
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               commenets
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <div *ngFor="let comment of result.comment" class="dropdown-item" >{{comment}}</div>
+              <div *ngFor="let comment of result.comment" class="dropdown-item" >{{comment.body}}</div>
               <button  class="btn btn-primary">Comment</button>
             </div>
           </div>
@@ -56,19 +56,19 @@
 <div *ngIf="isSearch" class="row ">
   <div *ngFor="let post of articles" class="col-lg-3">
     <div class="post">
-      <div *ngIf="post.img" class= 'pic'>
-        <img class="card-img-top" src="{{post.img}}">
+      <div *ngIf="post?.picture" class= 'pic'>
+        <img class="card-img-top" src="{{post?.picture}}">
       </div>
       <div class="card-body">
-        <p class="card-text">{{post.text}}</p>
-        <p><b>Time</b>: {{post.time}}</p>
-        <p><b>Author</b>: {{post.author}}</p>
+        <p class="card-text">{{post?.body}}</p>
+        <p><b>Time</b>: {{post?.date}}</p>
+        <p><b>Author</b>: {{post?.author.username}}</p>
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               commenets
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <div *ngFor="let comment of post.comment" class="dropdown-item" >{{comment}}</div>
+              <div *ngFor="let comment of post.comments" class="dropdown-item" >{{comment?.body}}</div>
               <button  class="btn btn-primary">Comment</button>
             </div>
           </div>

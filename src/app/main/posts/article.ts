@@ -1,10 +1,10 @@
 export class Article {
-  author: string;
-  text: string;
-  img: string;
+  author: String;
+  text: String;
+  img: String;
   time: string;
-  comment?: string;
-  constructor(author: string, text: string, img: string, time: string, comment?: string) {
+  comment?: String;
+  constructor(author: String, text: String, img: String, time: string, comment?: String) {
     this.author = author;
     this.text = text;
     this.img = img;

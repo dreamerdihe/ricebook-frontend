@@ -10,6 +10,12 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  userEmail: String;
+  userAccountName: String;
+  userPhoneNumber: String;
+  userDob: String;
+  userZipcode: String;
+
   displayNameText: string;
   emailText: string;
   phoneNumberText: string;
@@ -19,32 +25,52 @@ export class ProfileComponent implements OnInit {
   birthRestrict: Date;
 
   constructor(private profileService: ProfileService, private router: Router) {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    this.user = new User(user['accountName'], user['email'], user['phoneNumber'],
-    user['dateOfBirth'], user['zipcode'], user['password'], user['displayName'], user['headline'], user['portrait']);
    }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.profileService.getEmail().subscribe((res: any) => {
+      this.userAccountName = res.username;
+      this.userEmail = res.email;
+    });
+
+    this.profileService.getPhoneNumber().subscribe((res: any) => {
+      this.userPhoneNumber = res.phone;
+    });
+
+    this.profileService.getDob().subscribe((res: any) => {
+      this.userDob = new Date(res.dob).toLocaleDateString();
+    });
+
+    this.profileService.getZipcode().subscribe((res: any) => {
+      this.userZipcode = res.zipcode;
+    });
+  }
 
   onSubmit(valid) {
     if (valid) {
-      if (this.displayNameText && this.displayNameText.length > 0) {
-        this.user.displayName = this.displayNameText;
-      }
+      // if (this.displayNameText && this.displayNameText.length > 0) {
+      //   this.user.displayName = this.displayNameText;
+      // }
       if (this.emailText && this.emailText.length > 0) {
-        this.user.email = this.emailText;
+        this.profileService.updateEmail(this.emailText).subscribe((res: any) => {
+          this.userEmail = res.email;
+        });
       }
       if (this.phoneNumberText && this.phoneNumberText.length > 0) {
-        this.user.phoneNumber = this.phoneNumberText;
+        this.profileService.updatePhone(this.phoneNumberText).subscribe((res: any) => {
+          this.userPhoneNumber = res.phone;
+        });
       }
       if (this.zipcodeText && this.zipcodeText.length > 0) {
-        this.user.zipcode = this.zipcodeText;
+        this.profileService.updateZipcode(this.zipcodeText).subscribe((res: any) => {
+          this.userZipcode = res.zipcode;
+        });
       }
       if (this.password2Text && this.password2Text.length > 0) {
-        this.user.password = this.password2Text;
+        this.profileService.updatePassword(this.password2Text).subscribe((res) => {
+          console.log(res.result);
+        });
       }
-      localStorage.setItem('currentUser', JSON.stringify(this.user));
     }
-
   }
 }
