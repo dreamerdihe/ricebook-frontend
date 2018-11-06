@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Follower } from '../main/follower';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

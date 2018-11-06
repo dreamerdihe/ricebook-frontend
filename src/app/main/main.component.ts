@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Follower } from './follower';
-import { User } from '../user';
 import { MainService } from './main.service';
 
 @Component({

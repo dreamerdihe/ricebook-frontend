@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 
-import { User } from '../../user';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,8 +13,6 @@ export class LoginComponent implements OnInit {
   password: string;
   isLogin: boolean;
   isSubmit = false;
-  regisertedUsers = {};
-  user: User;
 
   constructor(private router: Router, private loginService: LoginService) {}
 

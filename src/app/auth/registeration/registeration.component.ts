@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterationService} from './registeration.service';
-import { HttpBackend } from '@angular/common/http';
+
+
 @Component({
   selector: 'app-registeration',
   templateUrl: './registeration.component.html',
