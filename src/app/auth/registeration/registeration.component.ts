@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterationService} from './registeration.service';
+import { LoginService } from '../login/login.service';
 
 
 @Component({
@@ -18,7 +19,10 @@ export class RegisterationComponent implements OnInit {
   password2Text: string;
   birthRestrict: Date;
 
-  constructor(private registerService: RegisterationService) {}
+  isSuccess = false;
+  isDuplicate = false;
+
+  constructor(private registerService: RegisterationService, private loginService: LoginService) {}
 
   ngOnInit() {
   }
@@ -29,10 +33,12 @@ export class RegisterationComponent implements OnInit {
         this.dateOfBirthText, this.zipcodeText, this.password2Text)
         .subscribe(res => {
         if (res['result'] === 'success') {
-          alert('registration success');
+          this.isSuccess = true;
         }
-        if (res['result'] === 'username duplicate') {
-          alert('username has been token');
+      },
+      err => {
+        if (err.status === 409) {
+          this.isDuplicate = true;
         }
       });
     }

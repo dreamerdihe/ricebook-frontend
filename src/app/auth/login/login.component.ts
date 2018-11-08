@@ -33,7 +33,10 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/main']);
           }, 500);
-      } else  {
+      }
+    },
+    err => {
+      if (err.status === 403) {
         this.isLogin = false;
       }
     });

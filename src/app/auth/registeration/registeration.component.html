@@ -4,7 +4,12 @@
       <div class='form-group'>
         <label for='accountName'>Account Name:</label>
         <input type="text" id="accountName" class="form-control" name="accountName"  #accountName="ngModel" [(ngModel)]="accountNameText" pattern="[a-zA-Z][a-zA-Z0-9]*" required>
-        <div *ngIf="accountName.invalid && (accountName.dirty || accountName.touched)" class="alert alert-danger">
+         <div *ngIf="isDuplicate && (accountNameText?.length > 0) && (accountName.dirty || accountName.touched)" class="alert alert-danger">
+          <div *ngIf="isDuplicate" class="alert alert-danger">
+          account name has existed
+        </div>
+         </div>
+        <div *ngIf="accountName.invalid &&  (accountName.dirty || accountName.touched)" class="alert alert-danger">
             <div *ngIf="accountName?.errors.required">
               account name is required.
             </div>
@@ -84,8 +89,12 @@
           </div>
       </div>
       <input id="timestamp" type="hidden" name="timestamp">
-      <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Register</button>
+      <div *ngIf="isSuccess" class="alert alert-success"  id="regSuccess">
+        your registeration is successful, you can login now!
+      </div>
+      <button id="registerBtn" type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Register</button>
       <button type="reset" class="btn btn-primary">Reset</button>
+      <div id="lala">lala</div>
   </form>
 </div>
 

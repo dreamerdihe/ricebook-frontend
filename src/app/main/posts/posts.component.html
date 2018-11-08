@@ -13,7 +13,7 @@
                 <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
               </div>
             </div>
-            <button type="reset" class="btn btn-primary" id="post">Cancel</button>
+            <button type="reset" class="btn btn-primary" id="reset">Cancel</button>
             <button type="submit" class="btn btn-primary" id="post">Post</button>
         </form>
     </div>
@@ -21,7 +21,7 @@
 <div class = "frame" id="search">
   <form class="form-inline my-2 my-lg-0" (ngSubmit)="search()" #seachForm="ngForm">
     <input class="form-control mr-sm-2" type="search"  name="search" id='searchFilter' placeholder="Search" [(ngModel)]="searchFor" aria-label="Search" size=95%>
-    <button *ngIf="isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    <button *ngIf="isSearch" class="btn btn-primary my-2 my-sm-0" type="submit" id="search">Search</button>
     <button *ngIf="!isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Back</button>
   </form>
   <span *ngIf='!isSearch && keyword != null && keyword.length > 0' id='keyword'>searching for {{keyword}}</span>
@@ -36,7 +36,7 @@
       <div class="card-body">
         <p class="card-text">{{result.body}}</p>
         <p><b>Time</b>: {{result.date}}</p>
-        <p><b>Author</b>: {{result.author.username}}</p>
+        <p id="author"><b>Author</b>: {{result.author.username}}</p>
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               commenets

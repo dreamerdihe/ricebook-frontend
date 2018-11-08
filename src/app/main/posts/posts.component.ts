@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Article } from './article';
 import { PostsService } from './posts.service';
 import { Follower } from '../follower';
@@ -19,7 +21,7 @@ export class PostsComponent implements OnChanges {
   isSearch = true;
   searchFor: string;
   searchResults: Article[] = [];
-  constructor(private postService: PostsService) {
+  constructor(private postService: PostsService, private router: Router) {
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
@@ -29,6 +31,12 @@ export class PostsComponent implements OnChanges {
   getPosts_() {
     this.postService.getPosts().subscribe((res) => {
       this.articles = res.articles;
+    },
+    err => {
+      if (err.status === 401) {
+        alert('your sesscion is timeout');
+        this.router.navigate(['/landing']);
+      }
     });
   }
 

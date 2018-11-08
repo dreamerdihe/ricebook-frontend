@@ -9,12 +9,12 @@
   </div>
   <div class="status">
     <h5 *ngIf="!headline">What are you thinking?</h5>
-    <h5 *ngIf="headline">{{headline}}</h5>
+    <h5 *ngIf="headline" id="selfHeadline">{{headline}}</h5>
   </div>
   <div>
     <form (ngSubmit) = "updateHeadline(headlineForm.valid)" #headlineForm=ngForm>
       <input type="text" class="form-control" id="status" placeholder="New Status" [(ngModel)]="headlineText" name="newHeadline" aria-label="Recipient's username" aria-describedby="basic-addon2">
-      <button type="submit" class="btn btn-primary">update</button>
+      <button type="submit" class="btn btn-primary" id="updateHeadline">update</button>
     </form>
   </div>
 
