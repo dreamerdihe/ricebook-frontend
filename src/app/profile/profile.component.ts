@@ -68,7 +68,6 @@ export class ProfileComponent implements OnInit {
       }
       if (this.password2Text && this.password2Text.length > 0) {
         this.profileService.updatePassword(this.password2Text).subscribe((res) => {
-          console.log(res.result);
         });
       }
     }

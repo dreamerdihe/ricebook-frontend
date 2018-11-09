@@ -28,6 +28,10 @@ export class MainService {
   }
 
   addFollowing(id: String): Observable<any> {
-    return this.http.put(this.backendUrl + 'following/' + id, {withCredentials: true});
+    return this.http.put(this.backendUrl + 'following/' + id, {}, {withCredentials: true});
+  }
+
+  search(username: String): Observable<any> {
+    return this.http.post(this.backendUrl + 'search', {'searchFor': username}, {withCredentials: true});
   }
 }

@@ -40,9 +40,6 @@ export class MainComponent implements OnInit {
     if (ids.length > 0) {
       this.mainService.getHeadlines(ids).subscribe((resHealines) => {
         this.mainService.getAvatar(ids).subscribe((resAvatars) => {
-          console.log(resHealines);
-          console.log(resAvatars);
-          console.log(ids);
           const headlines = resHealines.headlines;
           const avatars = resAvatars.avatar;
           for (let i = 0; i < headlines.length; i++) {

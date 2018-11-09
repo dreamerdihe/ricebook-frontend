@@ -34,7 +34,6 @@ export class SelfComponent implements OnInit {
   logout() {
     this.selfService.logout()
     .subscribe(res => {
-      console.log(res);
       localStorage.clear();
     });
   }
