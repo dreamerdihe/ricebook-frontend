@@ -31,10 +31,4 @@ export class SelfComponent implements OnInit {
     }
   }
 
-  logout() {
-    this.selfService.logout()
-    .subscribe(res => {
-      localStorage.clear();
-    });
-  }
 }

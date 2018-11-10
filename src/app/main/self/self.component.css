@@ -1,14 +1,47 @@
-#logout {
-  padding-left:90px;
+.card {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
-#profile {
-  padding-left: 20px;
+#self {
+  margin-top:50px;
+  margin-bottom: 30px;
 }
 
-img {
-  width: 200px;
-  border-radius:20px;
-  border-style: ridge;
-  margin:10px;
+#username {
+  font-size: 1.5em;
+}
+
+#hLD {
+  margin-bottom: 10px;
+}
+
+.avatart-boarder {
+  text-align: center;
+}
+
+.selfHeadline {
+  font-size: 20px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 150px;
+  clip-path: circle();
+}
+
+input {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#update {
+  text-align: center;
+}
+
+button {
+  margin-top:10px;
 }

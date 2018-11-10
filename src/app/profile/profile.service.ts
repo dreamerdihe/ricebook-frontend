@@ -9,6 +9,11 @@ export class ProfileService {
   backendUrl = 'http://localhost:3000/';
   constructor(private http: HttpClient) {}
 
+  getAvatar(): Observable<any> {
+    return this.http.get<any>(this.backendUrl + 'avatars', {withCredentials: true});
+
+  }
+
   getEmail(): Observable<any> {
     return this.http.get<any>(this.backendUrl + 'email', {withCredentials: true});
   }

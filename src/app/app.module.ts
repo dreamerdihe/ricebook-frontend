@@ -15,6 +15,7 @@ import { HeadlineComponent } from './main/headline/headline.component';
 import { PostsComponent } from './main/posts/posts.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SelfComponent } from './main/self/self.component';
+import { NavComponent } from './nav/nav.component';
 
 export const routes: Routes = [
                                {path: '', redirectTo: 'landing', pathMatch: 'full'}, {path: 'landing', component: AuthComponent},
@@ -35,7 +36,8 @@ export const routes: Routes = [
     PostsComponent,
     ProfileComponent,
     IsValidBirthDay,
-    SelfComponent
+    SelfComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

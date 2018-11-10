@@ -1,12 +1,12 @@
-/* body{
-  background-image: url("https://www.collegechoice.net/wp-content/uploads/2016/05/Rice-University-761x571.jpg");
-} */
+body{
+  background-color: #fafafa;
+}
 
 .frame{
   background-color:rgba(252, 252, 252, 0.883);
   text-align: center;
   border-radius:20px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+
   border-style: ridge;
   padding:20px;
   margin: 20px;

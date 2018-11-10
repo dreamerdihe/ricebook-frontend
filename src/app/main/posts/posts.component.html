@@ -1,79 +1,75 @@
-<div class="frame">
-  <h3>New Post</h3>
-    <div id="mypost">
-        <form (ngSubmit)="Post(post.dirty)" #post=ngForm>
-          <textarea id="newPost" name="newPost" rows="5" cols="50" [(ngModel)]="newText" placeholder="What's on your mind?........."></textarea>
-          <br>
-          <div class="input-group mb-3" id="img">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" name="newImg" id="inputGroupFile02">
-                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose an Image</label>
-              </div>
-              <div class="input-group-append">
-                <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-              </div>
-            </div>
-            <button type="reset" class="btn btn-primary" id="reset">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="post">Post</button>
-        </form>
-    </div>
-</div>
-<div class = "frame" id="search">
-  <form class="form-inline my-2 my-lg-0" (ngSubmit)="search()" #seachForm="ngForm">
-    <input class="form-control mr-sm-2" type="search"  name="search" id='searchFilter' placeholder="Search" [(ngModel)]="searchFor" aria-label="Search" size=95%>
-    <button *ngIf="isSearch" class="btn btn-primary my-2 my-sm-0" type="submit" id="search">Search</button>
-    <button *ngIf="!isSearch" class="btn btn-primary my-2 my-sm-0" type="submit">Back</button>
-  </form>
-  <span *ngIf='!isSearch && keyword != null && keyword.length > 0' id='keyword'>searching for {{keyword}}</span>
+<div class="card" id="newPostPart">
+  <div class="card-body">
+    <h3>New post</h3>
+    <form (ngSubmit)="Post(post.dirty)" #post=ngForm>
+      <div class="form-group">
+        <textarea class="form-control"  name="newPostText" rows="5"  placeholder="what is in your mind?...." id="comment" [(ngModel)]="newText"></textarea>
+      </div>
+      <div class="input-group mb-3" id="img">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" name="newImg" id="inputGroupFile02">
+          <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose an Image</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+        </div>
+      </div>
+      <button type="reset" class="btn btn-outline-dark" id="reset">Cancel</button>
+      <button type="submit" class="btn btn-outline-dark" id="post">Post</button>
+    </form>
+  </div>
 </div>
 
-<div *ngIf="!isSearch" class="row">
-  <div *ngFor="let result of searchResults" class="col-lg-3">
-    <div class="post">
-      <div *ngIf="result.picture" class= 'pic'>
-        <img class="card-img-top" src="{{result.picture}}">
+<div class="card">
+  <div class="card-body">
+    <form class="form-inline my-2 my-lg-0" (ngSubmit)="search()" #seachForm="ngForm">
+      <input class="form-control mr-sm-2" type="search"  name="search" id='searchFilter' placeholder="Search" [(ngModel)]="searchFor" aria-label="Search">
+      <button *ngIf="isSearch" class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search">Search</button>
+      <button *ngIf="!isSearch" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Back</button>
+    </form>
+    <p *ngIf='!isSearch && keyword != null && keyword.length > 0' id='keyword' class="card-text">searching for {{keyword}}</p>
+  </div>
+</div>
+
+<div *ngIf="!isSearch">
+  <div *ngFor="let result of searchResults" class="col-lg-12">
+    <div class="card">
+      <div *ngIf="result?.picture" >
+        <img class="card-img-top" src="{{result?.picture}}">
       </div>
       <div class="card-body">
-        <p class="card-text">{{result.body}}</p>
-        <p><b>Time</b>: {{result.date}}</p>
-        <p id="author"><b>Author</b>: {{result.author.username}}</p>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              commenets
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <div *ngFor="let comment of result.comment" class="dropdown-item" >{{comment.body}}</div>
-              <button  class="btn btn-primary">Comment</button>
-            </div>
-          </div>
-        <button class="btn btn-primary">Edit</button>
-        <br/>
+        <p class="card-text">{{result?.body}}</p>
+        <p><b>Time</b>: {{result?.date}}</p>
+        <p><b>Author</b>: {{result?.author.username}}</p>
+        <div *ngFor="let comment of result?.comments">
+          <b>{{comment.author}}</b>  {{comment.body}}
+        </div>
       </div>
-     </div>
+    </div>
   </div>
 </div>
 
 <div *ngIf="isSearch" class="row ">
-  <div *ngFor="let post of articles" class="col-lg-3">
-    <div class="post">
-      <div *ngIf="post?.picture" class= 'pic'>
+  <div *ngFor="let post of articles" class="col-lg-12">
+    <div class="card">
+      <div *ngIf="post?.picture" >
         <img class="card-img-top" src="{{post?.picture}}">
       </div>
-      <div class="card-body">
+      <div class="card-body post-body">
         <p class="card-text">{{post?.body}}</p>
         <p><b>Time</b>: {{post?.date}}</p>
         <p><b>Author</b>: {{post?.author.username}}</p>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              commenets
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <div *ngFor="let comment of post.comments" class="dropdown-item" >{{comment?.body}}</div>
-              <button  class="btn btn-primary">Comment</button>
-            </div>
-          </div>
-        <button  class="btn btn-primary">Edit</button>
-        <br/>
+        <div *ngFor="let comment of post.comments">
+          <b>{{comment.author}}</b>  {{comment.body}}
       </div>
+
+      <div class="sH9wk">
+        <form id="commentArea">
+          <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+          <button type="submit" class="commentBtn"><i class="far fa-comment-alt"></i></button>
+        </form>
+      </div>
+
     </div>
+  </div>
 </div>

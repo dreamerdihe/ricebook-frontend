@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User;
+  userAvatar: String;
   userEmail: String;
   userAccountName: String;
   userPhoneNumber: String;
@@ -24,13 +24,17 @@ export class ProfileComponent implements OnInit {
   password2Text: string;
   birthRestrict: Date;
 
-  constructor(private profileService: ProfileService, private router: Router) {
+  constructor(private profileService: ProfileService) {
    }
 
   ngOnInit() {
     this.profileService.getEmail().subscribe((res: any) => {
       this.userAccountName = res.username;
       this.userEmail = res.email;
+    });
+
+    this.profileService.getAvatar().subscribe((res: any) => {
+      this.userAvatar = res.avatar;
     });
 
     this.profileService.getPhoneNumber().subscribe((res: any) => {

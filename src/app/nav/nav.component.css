@@ -1,0 +1,13 @@
+nav {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(0, 0, 0, 0.098);
+  height: 60px;
+}
+
+#icon {
+  font-size: 1.7em;
+}
+#function {
+  font-size: 1em;
+}

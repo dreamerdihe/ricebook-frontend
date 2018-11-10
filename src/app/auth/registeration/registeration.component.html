@@ -1,100 +1,101 @@
-<div class="frame">
-  <h1>Register</h1>
-  <form  (ngSubmit) = "onSubmit(userForm.valid)" #userForm="ngForm">
-      <div class='form-group'>
-        <label for='accountName'>Account Name:</label>
-        <input type="text" id="accountName" class="form-control" name="accountName"  #accountName="ngModel" [(ngModel)]="accountNameText" pattern="[a-zA-Z][a-zA-Z0-9]*" required>
-         <div *ngIf="isDuplicate && (accountNameText?.length > 0) && (accountName.dirty || accountName.touched)" class="alert alert-danger">
-          <div *ngIf="isDuplicate" class="alert alert-danger">
-          account name has existed
+<div class="card">
+  <div class="card-body">
+    <h1>Register</h1>
+    <form  (ngSubmit) = "onSubmit(userForm.valid)" #userForm="ngForm">
+        <div class='form-group'>
+          <label for='accountName'>Account Name:</label>
+          <input type="text" id="accountName" class="form-control" name="accountName"  #accountName="ngModel" [(ngModel)]="accountNameText" pattern="[a-zA-Z][a-zA-Z0-9]*" required>
+          <div *ngIf="isDuplicate && (accountNameText?.length > 0) && (accountName.dirty || accountName.touched)" class="alert alert-danger">
+            <div *ngIf="isDuplicate" class="alert alert-danger">
+            account name has existed
+          </div>
+          </div>
+          <div *ngIf="accountName.invalid &&  (accountName.dirty || accountName.touched)" class="alert alert-danger">
+              <div *ngIf="accountName?.errors.required">
+                account name is required.
+              </div>
+              <div *ngIf="accountName?.errors.pattern">
+                Upper or lower case letters and numbers, not start with a number
+              </div>
+          </div>
+          <span>Upper or lower case letters and numbers, not start with a number</span>
         </div>
-         </div>
-        <div *ngIf="accountName.invalid &&  (accountName.dirty || accountName.touched)" class="alert alert-danger">
-            <div *ngIf="accountName?.errors.required">
-              account name is required.
-            </div>
-            <div *ngIf="accountName?.errors.pattern">
-              Upper or lower case letters and numbers, not start with a number
+        <div class='form-group'>
+          <label for="displayName">Display Name(optional):</label>
+          <input type="text" id="displayName" class="form-control" name="displayName" [(ngModel)]="displayNameText">
+        </div>
+        <div class='form-group'>
+          <label for="email">Email Address: </label>
+          <input type="text" id="email" class="form-control" name="email" #email=ngModel [(ngModel)]="emailText" email required>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+              <div *ngIf="email?.errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="email?.errors.email">
+                Please enter a valid email
+              </div>
+          </div>
+        </div>
+        <div class='form-group'>
+            <label for="phoneNumber">Phone Number: </label>
+            <input type="tel" id="phoneNumber" class="form-control" name="phoneNumber" #phoneNumber=ngModel [(ngModel)]="phoneNumberText" placeholder="012-345-6789" pattern="\d{3}-\d{3}-\d{4}" required>
+            <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+                <div *ngIf="phoneNumber?.errors.required">
+                  Phone Number is required.
+                </div>
+                <div *ngIf="phoneNumber?.errors.pattern">
+                  Please enter valid phone number
+                </div>
             </div>
         </div>
-        <span>Upper or lower case letters and numbers, not start with a number</span>
-      </div>
-      <div class='form-group'>
-        <label for="displayName">Display Name(optional):</label>
-        <input type="text" id="displayName" class="form-control" name="displayName" [(ngModel)]="displayNameText">
-      </div>
-      <div class='form-group'>
-        <label for="email">Email Address: </label>
-        <input type="text" id="email" class="form-control" name="email" #email=ngModel [(ngModel)]="emailText" email required>
-        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-            <div *ngIf="email?.errors.required">
-              Email is required.
+        <div class='form-group'>
+            <label for="dateOfBirth">Date of Birth: </label>
+            <input type="date" id="dateOfBirth" class="form-control" name="dateOfBirth" #dateOfBirth=ngModel [(ngModel)]="dateOfBirthText" date required >
+            <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)" class="alert alert-danger">
+                <div *ngIf="dateOfBirth?.errors.required">
+                  Date of birth is required.
+                </div>
+                <div *ngIf="dateOfBirth?.errors.date">
+                  You must be 18 years old or older
+                </div>
             </div>
-            <div *ngIf="email?.errors.email">
-              Please enter a valid email
+            <span class="red">18 years old or older</span>
+        </div>
+        <div class='form-group'>
+            <label for="zipcode">Zipcode: </label>
+            <input type="text" id="zipcode" class="form-control" name="zipcode" #zipcode=ngModel [(ngModel)]="zipcodeText" pattern="\d{5}$|\d{5}-\d{4}$" required>
+            <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="alert alert-danger">
+                <div *ngIf="zipcode?.errors.required">
+                  please enter zipcode
+                </div>
+                <div *ngIf="zipcode?.errors.pattern">
+                  please enter valid zipcode
+                </div>
             </div>
         </div>
-      </div>
-      <div class='form-group'>
-          <label for="phoneNumber">Phone Number: </label>
-          <input type="tel" id="phoneNumber" class="form-control" name="phoneNumber" #phoneNumber=ngModel [(ngModel)]="phoneNumberText" placeholder="012-345-6789" pattern="\d{3}-\d{3}-\d{4}" required>
-          <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
-              <div *ngIf="phoneNumber?.errors.required">
-                Phone Number is required.
-              </div>
-              <div *ngIf="phoneNumber?.errors.pattern">
-                Please enter valid phone number
-              </div>
-          </div>
-      </div>
-      <div class='form-group'>
-          <label for="dateOfBirth">Date of Birth: </label>
-          <input type="date" id="dateOfBirth" class="form-control" name="dateOfBirth" #dateOfBirth=ngModel [(ngModel)]="dateOfBirthText" date required >
-          <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)" class="alert alert-danger">
-              <div *ngIf="dateOfBirth?.errors.required">
-                Date of birth is required.
-              </div>
-              <div *ngIf="dateOfBirth?.errors.date">
-                You must be 18 years old or older
-              </div>
-          </div>
-          <span class="red">18 years old or older</span>
-      </div>
-      <div class='form-group'>
-          <label for="zipcode">Zipcode: </label>
-          <input type="text" id="zipcode" class="form-control" name="zipcode" #zipcode=ngModel [(ngModel)]="zipcodeText" pattern="\d{5}$|\d{5}-\d{4}$" required>
-          <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="alert alert-danger">
-              <div *ngIf="zipcode?.errors.required">
-                please enter zipcode
-              </div>
-              <div *ngIf="zipcode?.errors.pattern">
-                please enter valid zipcode
-              </div>
-          </div>
-      </div>
-      <div class='form-group'>
-          <label for="password">Password: </label>
-          <input id="password" type="password" class="form-control" name="password1" [(ngModel)]="password1Text" required>
-      </div>
-      <div class='form-group'>
-          <label for="passwordConfirmation">Password Confirmation: </label>
-          <input id="passwordConfirmation" type="password" class="form-control" name="password2" #password=ngModel [(ngModel)]="password2Text" pattern="{{password1Text}}"  required>
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-              <div *ngIf="password?.errors.required">
-                Plear comfirm your password.
-              </div>
-              <div *ngIf="password?.errors.pattern">
-                Your two passwords are not identical
-              </div>
-          </div>
-      </div>
-      <input id="timestamp" type="hidden" name="timestamp">
-      <div *ngIf="isSuccess" class="alert alert-success"  id="regSuccess">
-        your registeration is successful, you can login now!
-      </div>
-      <button id="registerBtn" type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Register</button>
-      <button type="reset" class="btn btn-primary">Reset</button>
-      <div id="lala">lala</div>
-  </form>
+        <div class='form-group'>
+            <label for="password">Password: </label>
+            <input id="password" type="password" class="form-control" name="password1" [(ngModel)]="password1Text" required>
+        </div>
+        <div class='form-group'>
+            <label for="passwordConfirmation">Password Confirmation: </label>
+            <input id="passwordConfirmation" type="password" class="form-control" name="password2" #password=ngModel [(ngModel)]="password2Text" pattern="{{password1Text}}"  required>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password?.errors.required">
+                  Plear comfirm your password.
+                </div>
+                <div *ngIf="password?.errors.pattern">
+                  Your two passwords are not identical
+                </div>
+            </div>
+        </div>
+        <input id="timestamp" type="hidden" name="timestamp">
+        <div *ngIf="isSuccess" class="alert alert-success"  id="regSuccess">
+          your registeration is successful, you can login now!
+        </div>
+        <button id="registerBtn" type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Register</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+    </form>
+  </div>
 </div>
 

@@ -21,7 +21,4 @@ export class SelfService {
     return this.http.get(this.backendUrl + 'avatars', {withCredentials: true});
   }
 
-  logout() {
-    return this.http.put<any>(this.backendUrl + 'logout/', {}, { withCredentials: true });
-  }
 }

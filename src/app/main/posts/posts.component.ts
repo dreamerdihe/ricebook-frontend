@@ -26,6 +26,7 @@ export class PostsComponent implements OnChanges {
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     this.getPosts_();
+    console.log(this.articles.length);
   }
 
   getPosts_() {
@@ -41,6 +42,7 @@ export class PostsComponent implements OnChanges {
   }
 
   Post(dirty) {
+    console.log('add', this.newText);
     if (dirty) {
       this.postService.postPost(this.newText).subscribe((res) => {
         this.articles = res.articles;

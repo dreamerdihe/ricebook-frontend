@@ -1,24 +1,80 @@
-.post {
-  background-color:rgba(252, 252, 252, 0.883);
-  text-align: center;
-  border-radius:20px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  border-style: ridge;
-  margin:10px;
+.card {
+  margin-top: 20px;
+  margin-left: 30px;
 }
-a {
+
+#newPostPart {
+  margin-top: 50px;
+  text-align: center;
+}
+
+textarea {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#newPost {
+  margin-top: 20px
+}
+
+#searchFilter {
+  margin-left: 15px;
+  width: 80%;
+}
+
+#img {
+  margin-left:auto;
+  margin-right:auto;
+  width: 80%;
+}
+
+.Ypffh {
+    background: 0 0;
+    border: 0;
+    color: #262626;
+    height: 18px;
+    max-height: 80px;
+    width: 580px;
+    outline: 0;
+    padding: 0;
+    resize: none;
+}
+
+.commentBtn {
+  background-color: white;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  width: 20px;
+  height: 20px;
+  margin-top:15px;
+  margin-bottom: 0px;
+}
+
+.sH9wk {
+  border-top: 1px solid #efefef;
+  color: #999;
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 18px;
   margin-top: 10px;
-  width: 110px;
+  padding-bottom: 0px;
+
 }
 
-.pic {
-  margin: 3px;
+#commentArea{
+  margin-bottom: 13px;
 }
 
-img {
-  border-radius:20px;
+.post-body {
+  padding-bottom: 0px;
 }
 
-.dropdow-menu {
-  text-align: center;
+
+
+.far {
+  font-size: 20px;
 }
+
+

@@ -1,41 +1,54 @@
-<div *ngFor="let follower of followers" class="frame">
-    <img class="card-img-top" src="{{follower?.portrait}}">
-    <h5>{{follower?.accountName}}</h5>
-    <div class="card-body">
-      <app-headline [headline]="follower?.headline"></app-headline>
-      <button class="btn btn-primary my-2 my-sm-0" (click)="removeFriend(follower)" type="submit">Unfollow</button>
+<div class="card">
+  <div class="card-body" class="following">
+    <div *ngFor="let follower of followers" class="following">
+      <div>
+        <img class="avatar" src="{{follower?.portrait}}">
+      </div>
+      <div>
+        <b>{{follower?.accountName}}</b>
+      </div>
+      <div>
+        <app-headline [headline]="follower?.headline"></app-headline>
+      </div>
+      <button class="btn btn-outline-dark" (click)="removeFriend(follower)" type="submit">Unfollow</button>
     </div>
-
-</div>
-<div class = "frame row-lg-12 form-group" id="search">
-    <form class="form-inline my-2 my-lg-0" (ngSubmit) = "addfriend(addForm.dirty)" #addForm="ngForm">
-      <input class="form-control" type="text" placeholder="Add friends" [(ngModel)]="newfriendName" name="add" aria-label="Search" size=20%>
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Add</button>
-      <div *ngIf="(addStatus === 1) && (newfriendName.length > 0)" class="alert alert-success">
-        <div>
-          add success
-        </div>
-      </div>
-      <div *ngIf="(addStatus === -1) && (newfriendName.length > 0)" class="alert alert-danger">
-          <div>
-            user doesn't exist
+  </div>
+  <div id="search">
+    <div class = "form-group">
+      <form class="form-inline my-2 my-lg-0" (ngSubmit) = "addfriend(addForm.dirty)" #addForm="ngForm">
+        <input class="form-control" type="text" placeholder="Add friends" [(ngModel)]="newfriendName" name="add" aria-label="Search">
+        <button class="btn btn-outline-dark" type="submit">Add</button>
+        <div id="addingRes">
+          <div *ngIf="(addStatus === 1) && (newfriendName?.length > 0)" class="alert alert-success">
+            <div>
+              add success
+            </div>
           </div>
-      </div>
-      <div *ngIf="(addStatus === -2) && (newfriendName.length > 0)" class="alert alert-danger">
-        <div>
-           already followed this user
-        </div>
-      </div>
-      <div *ngIf="(addStatus === -3) && (newfriendName.length > 0)" class="alert alert-danger">
-          <div>
-            you are searching yourself
+          <div *ngIf="(addStatus === -1) && (newfriendName?.length > 0)" class="alert alert-danger">
+            <div>
+              user doesn't exist
+            </div>
           </div>
-      </div>
-      <div *ngIf="(addForm.dirty || addForm.touched) && (newfriendName.length < 1)" class="alert alert-danger">
-        <div>
-        username is empty
+          <div *ngIf="(addStatus === -2) && (newfriendName?.length > 0)" class="alert alert-danger">
+            <div>
+              already followed this user
+            </div>
+          </div>
+          <div *ngIf="(addStatus === -3) && (newfriendName?.length > 0)" class="alert alert-danger">
+            <div>
+              you are searching yourself
+            </div>
+          </div>
+          <div *ngIf="(addForm.dirty || addForm.touched) && (newfriendName?.length < 1)" class="alert alert-danger">
+            <div>
+            username is empty
+            </div>
+          </div>
         </div>
-      </div>
-
-    </form>
+      </form>
+    </div>
+  </div>
 </div>
+
+
+

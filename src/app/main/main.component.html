@@ -1,16 +1,12 @@
-<div class='container row col-12'>
-  <div class='left-container col-sm-3'>
-    <div id="profile">
+<app-nav></app-nav>
+<div class="container">
+  <div class=' row col-12'>
+    <div class='part-container col-sm-4'>
       <app-self></app-self>
+      <app-following [followers]='followings' [currentUser]='username' (add)='addFriend($event)' (delete)='removeFriend($event)'></app-following>
     </div>
-    <app-following [followers]='followings' [currentUser]='username' (add)='addFriend($event)' (delete)='removeFriend($event)'></app-following>
-  </div>
-
-  <div class='right-container col-sm-9'>
-    <div id="posts">
+    <div class='part-container col-sm-8'>
       <app-posts [followers]='followings' [length]='followings.length' [accountName]='username'></app-posts>
     </div>
   </div>
 </div>
-
-
