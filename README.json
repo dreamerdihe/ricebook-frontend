@@ -1,4 +1,6 @@
 {
   "netid": "yh67",
-  "frontend": "http://ricebook-hw6-yh67.surge.sh/"
+  "frontend": "http://ricebook-hw6-yh67.surge.sh/",
+  "test-accountName": "rice",
+  "password": "1"
 }
