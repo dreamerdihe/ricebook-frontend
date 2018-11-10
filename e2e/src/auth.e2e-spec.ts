@@ -72,7 +72,7 @@ describe('', () => {
   it('should Update headline', () => {
     page.updateHeadline('this is an e2e test for updating headline');
     // browser.sleep(2000);
-    const headline = element(by.css('h5[id=selfHeadline]')).getText();
+    const headline = element(by.css('span[id=selfHeadline]')).getText();
     expect(headline).toBe('this is an e2e test for updating headline');
   });
 
@@ -80,7 +80,7 @@ describe('', () => {
     page.searchPost('Nam');
     const text = element(by.css('.card-text')).getText();
     expect(text).toContain('Nam');
-    const author = element(by.css('#author')).getText();
+    const author = element(by.css('#searchAuthor')).getText();
     expect(author).toBe('Author: rice');
   });
 });

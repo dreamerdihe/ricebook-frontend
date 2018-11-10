@@ -3,7 +3,7 @@
     <h3>New post</h3>
     <form (ngSubmit)="Post(post.dirty)" #post=ngForm>
       <div class="form-group">
-        <textarea class="form-control"  name="newPostText" rows="5"  placeholder="what is in your mind?...." id="comment" [(ngModel)]="newText"></textarea>
+        <textarea class="form-control"  name="newPostText" rows="5"  placeholder="what is in your mind?...." id="newPost" [(ngModel)]="newText"></textarea>
       </div>
       <div class="input-group mb-3" id="img">
         <div class="custom-file">
@@ -40,9 +40,9 @@
       <div class="card-body">
         <p class="card-text">{{result?.body}}</p>
         <p><b>Time</b>: {{result?.date}}</p>
-        <p><b>Author</b>: {{result?.author.username}}</p>
+        <p id="searchAuthor"><b>Author</b>: {{result?.author.username}}</p>
         <div *ngFor="let comment of result?.comments">
-          <b>{{comment.author}}</b>  {{comment.body}}
+          <span><b>{{comment.author}}</b>  {{comment.body}}</span>
         </div>
       </div>
     </div>

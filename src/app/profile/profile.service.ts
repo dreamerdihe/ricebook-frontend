@@ -11,7 +11,6 @@ export class ProfileService {
 
   getAvatar(): Observable<any> {
     return this.http.get<any>(this.backendUrl + 'avatars', {withCredentials: true});
-
   }
 
   getEmail(): Observable<any> {

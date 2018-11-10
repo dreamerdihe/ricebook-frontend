@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites disabled="0" errors="0" failures="0" tests="6" time="19.185">
- <testsuite name="" timestamp="2018-11-07T22:33:19" hostname="localhost" time="6.605" errors="0" tests="3" skipped="0" disabled="0" failures="0">
-  <testcase classname="" name="should Register a new user named &quot;realUser&quot;" time="1.779" />
-  <testcase classname="" name="should Log in and log out as &quot;realUser&quot;" time="2.59" />
-  <testcase classname="" name="should Log in and log out a test user" time="2.235" />
+<testsuites disabled="0" errors="0" failures="0" tests="6" time="19.823">
+ <testsuite name="" timestamp="2018-11-10T12:33:34" hostname="localhost" time="7.066" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="" name="should Register a new user named &quot;realUser&quot;" time="1.943" />
+  <testcase classname="" name="should Log in and log out as &quot;realUser&quot;" time="2.767" />
+  <testcase classname="" name="should Log in and log out a test user" time="2.355" />
  </testsuite>
- <testsuite name="" timestamp="2018-11-07T22:33:26" hostname="localhost" time="12.58" errors="0" tests="3" skipped="0" disabled="0" failures="0">
-  <testcase classname="" name="should Create new article and validate article appears in feed" time="5.735" />
-  <testcase classname="" name="should Update headline" time="3.575" />
-  <testcase classname="" name="search for a specific post" time="3.27" />
+ <testsuite name="" timestamp="2018-11-10T12:33:41" hostname="localhost" time="12.757" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="" name="should Create new article and validate article appears in feed" time="5.702" />
+  <testcase classname="" name="should Update headline" time="3.695" />
+  <testcase classname="" name="search for a specific post" time="3.358" />
  </testsuite>
 </testsuites>
