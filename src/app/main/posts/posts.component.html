@@ -38,7 +38,7 @@
         <img class="card-img-top" src="{{result?.picture}}">
       </div>
       <div class="card-body">
-        <p class="card-text">{{result?.body}}</p>
+        <p class="card-text search-body">{{result?.body}}</p>
         <p><b>Time</b>: {{result?.date}}</p>
         <p id="searchAuthor"><b>Author</b>: {{result?.author.username}}</p>
         <div *ngFor="let comment of result?.comments">

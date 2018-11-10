@@ -8,6 +8,11 @@
   clip-path: circle();
 }
 
+#avatar {
+  margin-top:15px;
+  margin-bottom:20px;
+}
+
 #portrait {
   padding: 20px;
 }

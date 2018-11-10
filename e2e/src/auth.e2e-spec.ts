@@ -77,9 +77,10 @@ describe('', () => {
   });
 
   it('search for a specific post', () => {
-    page.searchPost('Nam');
-    const text = element(by.css('.card-text')).getText();
-    expect(text).toContain('Nam');
+    page.searchPost('tempus');
+    const text = element.all(by.css('.search-body'));
+    expect(text.count()).toBe(1);
+    expect(text.first().getText()).toContain('tempus');
     const author = element(by.css('#searchAuthor')).getText();
     expect(author).toBe('Author: rice');
   });
