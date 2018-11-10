@@ -19,7 +19,11 @@ export class SelfComponent implements OnInit {
       this.headline = res.headline;
     });
     this.selfService.getAvatar().subscribe((res) => {
-      this.avatar = res.avatar;
+      if (res.avatar === '') {
+        this.avatar = 'https://www.kodefork.com/static/users/images/user.png';
+      } else {
+        this.avatar = res.avatar;
+      }
     });
   }
 

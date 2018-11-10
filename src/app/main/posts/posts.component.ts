@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Article } from './article';
 import { PostsService } from './posts.service';
+import { MainService } from '../main.service';
 import { Follower } from '../follower';
 
 @Component({
@@ -21,17 +22,21 @@ export class PostsComponent implements OnChanges {
   isSearch = true;
   searchFor: string;
   searchResults: Article[] = [];
-  constructor(private postService: PostsService, private router: Router) {
+  constructor(private postService: PostsService, private mainService: MainService, private router: Router) {
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     this.getPosts_();
-    console.log(this.articles.length);
   }
 
   getPosts_() {
     this.postService.getPosts().subscribe((res) => {
       this.articles = res.articles;
+      for (const article of this.articles) {
+        this.mainService.getAvatar([article.author.id]).subscribe((result) => {
+          article.author.avatar = result.avatar[0].avatar;
+        });
+      }
     },
     err => {
       if (err.status === 401) {

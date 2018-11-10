@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div class="card">
+<div class="card" id="searchPart">
   <div class="card-body">
     <form class="form-inline my-2 my-lg-0" (ngSubmit)="search()" #seachForm="ngForm">
       <input class="form-control mr-sm-2" type="search"  name="search" id='searchFilter' placeholder="Search" [(ngModel)]="searchFor" aria-label="Search">
@@ -31,45 +31,64 @@
   </div>
 </div>
 
-<div *ngIf="!isSearch">
+<div *ngIf="!isSearch" class="row">
   <div *ngFor="let result of searchResults" class="col-lg-12">
-    <div class="card">
-      <div *ngIf="result?.picture" >
-        <img class="card-img-top" src="{{result?.picture}}">
+    <div class="article">
+      <div class="header testSearch">
+        <div>
+          <img class="postAuthorAvatar" src={{result.author?.avatar}}>
+          <span id="searchAuthor"><b>{{result?.author.username}}</b></span>
+        </div>
       </div>
-      <div class="card-body">
-        <p class="card-text search-body">{{result?.body}}</p>
-        <p><b>Time</b>: {{result?.date}}</p>
-        <p id="searchAuthor"><b>Author</b>: {{result?.author.username}}</p>
-        <div *ngFor="let comment of result?.comments">
-          <span><b>{{comment.author}}</b>  {{comment.body}}</span>
+      <div class="card">
+        <div *ngIf="result?.picture" >
+          <img class="card-img-top" src="{{result?.picture}}">
+        </div>
+        <div class="card-body search-body">
+          <p class="card-text search-res">{{result?.body}}</p>
+          <p><b>Time</b>: {{result?.date}}</p>
+          <div *ngFor="let comment of result.comments">
+            <b>{{comment.author}}</b>  {{comment.body}}
+          </div>
+          <div class="sH9wk">
+            <form id="commentArea">
+              <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+              <button type="submit" class="commentBtn"><i class="far fa-comment-alt"></i></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="isSearch" class="row ">
+<div *ngIf="isSearch" class="row">
   <div *ngFor="let post of articles" class="col-lg-12">
-    <div class="card">
-      <div *ngIf="post?.picture" >
-        <img class="card-img-top" src="{{post?.picture}}">
+    <div class="article">
+      <div class="header">
+        <div>
+          <img class="postAuthorAvatar" src={{post.author?.avatar}}>
+          <span><b>{{post?.author.username}}</b></span>
+        </div>
       </div>
-      <div class="card-body post-body">
-        <p class="card-text">{{post?.body}}</p>
-        <p><b>Time</b>: {{post?.date}}</p>
-        <p><b>Author</b>: {{post?.author.username}}</p>
-        <div *ngFor="let comment of post.comments">
-          <b>{{comment.author}}</b>  {{comment.body}}
+      <div class="card">
+        <div *ngIf="post?.picture" >
+          <img class="card-img-top" src="{{post?.picture}}">
+        </div>
+        <div class="card-body post-body">
+          <p class="card-text">{{post?.body}}</p>
+          <p><b>Time</b>: {{post?.date}}</p>
+          <div *ngFor="let comment of post.comments">
+            <b>{{comment.author}}</b>  {{comment.body}}
+          </div>
+          <div class="sH9wk">
+            <form id="commentArea">
+              <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+              <button type="submit" class="commentBtn"><i class="far fa-comment-alt"></i></button>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <div class="sH9wk">
-        <form id="commentArea">
-          <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
-          <button type="submit" class="commentBtn"><i class="far fa-comment-alt"></i></button>
-        </form>
-      </div>
-
     </div>
   </div>
 </div>

@@ -34,7 +34,11 @@ export class ProfileComponent implements OnInit {
     });
 
     this.profileService.getAvatar().subscribe((res: any) => {
-      this.userAvatar = res.avatar;
+      if (res.avatar === '') {
+        this.userAvatar = 'https://www.kodefork.com/static/users/images/user.png';
+      } else {
+        this.userAvatar = res.avatar;
+      }
     });
 
     this.profileService.getPhoneNumber().subscribe((res: any) => {

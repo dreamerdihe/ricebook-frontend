@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  backendUrl = 'http://localhost:3000/';
+  backendUrl = 'https://ricebook-hw6-yh.herokuapp.com/';
   constructor(private http: HttpClient) {}
 
   getAvatar(): Observable<any> {

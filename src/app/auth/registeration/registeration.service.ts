@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterationService {
-  registerURL = 'http://localhost:3000';
+  backendUrl = 'https://ricebook-hw6-yh.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
   register(username: String, email: String, phone: String,
           dob: String, zipcode: String, password: String): Observable<any> {
-    return this.http.post<any>(this.registerURL + '/register',
+    return this.http.post<any>(this.backendUrl + 'register',
     {
       username: username,
       password: password,

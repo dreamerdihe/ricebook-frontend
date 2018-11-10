@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       }
     },
     err => {
-      if (err.status === 403) {
+      if (err.status === 403 || 404) {
         this.isLogin = false;
       }
     });

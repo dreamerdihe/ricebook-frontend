@@ -78,10 +78,10 @@ describe('', () => {
 
   it('search for a specific post', () => {
     page.searchPost('tempus');
-    const text = element.all(by.css('.search-body'));
+    const text = element.all(by.css('.search-res'));
     expect(text.count()).toBe(1);
     expect(text.first().getText()).toContain('tempus');
     const author = element(by.css('#searchAuthor')).getText();
-    expect(author).toBe('Author: rice');
+    expect(author).toBe('rice');
   });
 });

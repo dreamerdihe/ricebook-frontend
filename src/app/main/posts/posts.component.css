@@ -1,11 +1,20 @@
-.card {
+.article {
   margin-top: 20px;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 #newPostPart {
   margin-top: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
   text-align: center;
+}
+
+#searchPart {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 textarea {
@@ -71,10 +80,24 @@ textarea {
   padding-bottom: 0px;
 }
 
-
+.search-body {
+  padding-bottom: 0px;
+}
 
 .far {
   font-size: 20px;
 }
 
+.header {
+  padding:14px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+.postAuthorAvatar {
+  vertical-align: middle;
+  width: 40px;
+  clip-path: circle();
+  margin-right: 10px;
+}
 
