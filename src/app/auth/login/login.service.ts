@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  backendUrl = 'https://ricebook-hw6-yh.herokuapp.com/';
+  backendUrl = 'https://ricebook-yh.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterationService {
-  backendUrl = 'https://ricebook-hw6-yh.herokuapp.com/';
+  backendUrl = 'https://ricebook-yh.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
