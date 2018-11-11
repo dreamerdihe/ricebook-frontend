@@ -47,7 +47,6 @@ export class PostsComponent implements OnChanges {
   }
 
   Post(dirty) {
-    console.log('add', this.newText);
     if (dirty) {
       this.postService.postPost(this.newText).subscribe((res) => {
         this.articles = res.articles;
