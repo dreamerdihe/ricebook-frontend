@@ -16,4 +16,8 @@ export class PostsService {
   postPost(text: String): Observable<any> {
     return this.http.post<any>(this.backendUrl + 'article', {text: text}, {withCredentials: true});
   }
+
+  comment(text: String, id: String): Observable<any> {
+    return this.http.put<any>(this.backendUrl + 'articles/' + id, {text: text, commentId: -1}, {withCredentials: true});
+  }
 }

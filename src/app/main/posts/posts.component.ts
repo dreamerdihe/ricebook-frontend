@@ -21,7 +21,7 @@ export class PostsComponent implements OnChanges {
   newText: string;
   isSearch = true;
   searchFor: string;
-  searchResults: Article[] = [];
+  searchResults: any[] = [];
   constructor(private postService: PostsService, private mainService: MainService, private router: Router) {
   }
 
@@ -52,6 +52,17 @@ export class PostsComponent implements OnChanges {
         this.articles = res.articles;
       });
     }
+  }
+
+  comment(text: String, id: String) {
+    this.postService.comment(text, id).subscribe((res) => {
+      this.articles = res.articles;
+      for (const article of this.articles) {
+        this.mainService.getAvatar([article.author.id]).subscribe((result) => {
+          article.author.avatar = result.avatar[0].avatar;
+        });
+      }
+    });
   }
 
   search() {
