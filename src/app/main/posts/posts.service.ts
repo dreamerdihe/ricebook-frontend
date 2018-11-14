@@ -20,4 +20,8 @@ export class PostsService {
   comment(text: String, id: String): Observable<any> {
     return this.http.put<any>(this.backendUrl + 'articles/' + id, {text: text, commentId: '-1'}, {withCredentials: true});
   }
+
+  editComment(text: String, postId: String, commentId: String): Observable<any> {
+    return this.http.put<any>(this.backendUrl + 'articles/' + postId, {text: text, commentId: commentId}, {withCredentials: true});
+  }
 }

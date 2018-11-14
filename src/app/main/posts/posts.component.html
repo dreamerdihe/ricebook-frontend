@@ -79,7 +79,24 @@
           <p class="card-text">{{post?.body}}</p>
           <p><b>Time</b>: {{post?.date}}</p>
           <div *ngFor="let comment of post.comments">
-            <b>{{comment.author}}</b>  {{comment.body}}
+            <span>
+              <b>{{comment.author}}</b>  {{comment.body}}
+            </span>
+            <span>
+              <span *ngIf="comment.author === accountName" class="editCommentBtnArea">
+                <a data-toggle="collapse" class="editCommentBtn" href="#id{{comment._id}}" role="button" aria-expanded="false" attr.aria-controls="collapseExample">
+                  <i class="far fa-edit"></i>
+                </a>
+              </span>
+              <div class="collapse" id="id{{comment._id}}">
+                <div class="sH9wk">
+                  <form id="commentArea">
+                    <textarea aria-label="Edit a comment…" name="commentArea" [(ngModel)]="comment.newComment" placeholder="Edit this comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+                    <button type="submit" class="commentBtn" (click)="editComment(comment.newComment, post._id, comment._id)"><i class="far fa-comment-alt"></i></button>
+                  </form>
+                </div>
+              </div>
+            </span>
           </div>
           <div class="sH9wk">
             <form id="commentArea">

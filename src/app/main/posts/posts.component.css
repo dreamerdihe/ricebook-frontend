@@ -57,8 +57,10 @@ textarea {
   outline: 0;
   width: 20px;
   height: 20px;
-  margin-top:15px;
-  margin-bottom: 0px;
+  color: rgb(52, 58, 64);
+  margin:0;
+  margin-right: 4px;
+  float: right;
 }
 
 .sH9wk {
@@ -74,6 +76,7 @@ textarea {
 
 #commentArea{
   margin-bottom: 13px;
+  margin-top:13px;
 }
 
 .post-body {
@@ -101,3 +104,10 @@ textarea {
   margin-right: 10px;
 }
 
+.editCommentBtnArea {
+  float: right;
+}
+
+.editCommentBtn {
+  color: rgb(52, 58, 64);
+}
