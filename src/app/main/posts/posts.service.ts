@@ -24,4 +24,8 @@ export class PostsService {
   editComment(text: String, postId: String, commentId: String): Observable<any> {
     return this.http.put<any>(this.backendUrl + 'articles/' + postId, {text: text, commentId: commentId}, {withCredentials: true});
   }
+
+  editPost(text: String, postId: String): Observable<any> {
+    return this.http.put<any>(this.backendUrl + 'articles/' + postId, {text: text}, {withCredentials: true});
+  }
 }

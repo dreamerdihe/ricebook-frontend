@@ -44,7 +44,7 @@ textarea {
     color: #262626;
     height: 18px;
     max-height: 80px;
-    width: 580px;
+    width: 570px;
     outline: 0;
     padding: 0;
     resize: none;
@@ -71,7 +71,6 @@ textarea {
   line-height: 18px;
   margin-top: 10px;
   padding-bottom: 0px;
-
 }
 
 #commentArea{
@@ -80,7 +79,7 @@ textarea {
 }
 
 .post-body {
-  padding-bottom: 0px;
+  padding: 0px;
 }
 
 .search-body {
@@ -91,10 +90,32 @@ textarea {
   font-size: 20px;
 }
 
+.fa-arrow-circle-up {
+  font-size: 22px;
+}
+
 .header {
   padding:14px;
   padding-bottom: 10px;
   background-color: white;
+}
+
+.function-part {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.under-post {
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 23px;
+}
+
+.left {
+  float:right;
+  margin-left:0;
+  font-size: 20px;
 }
 
 .postAuthorAvatar {
@@ -111,3 +132,9 @@ textarea {
 .editCommentBtn {
   color: rgb(52, 58, 64);
 }
+
+.editPostBtnArea {
+  height: 20px;
+  width: 21px;
+}
+

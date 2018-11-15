@@ -75,6 +75,17 @@ export class PostsComponent implements OnChanges {
     });
   }
 
+  editPost(text: String, postId: String) {
+    this.postService.editPost(text, postId).subscribe((res) => {
+      this.articles = res.articles;
+      for (const article of this.articles) {
+        this.mainService.getAvatar([article.author.id]).subscribe((result) => {
+          article.author.avatar = result.avatar[0].avatar;
+        });
+      }
+    });
+  }
+
   search() {
     this.searchResults = [];
     if (this.isSearch) {

@@ -69,6 +69,22 @@
         <div *ngIf="post?.picture" >
           <img class="card-img-top" src="{{post?.picture}}">
         </div>
+        <div class="function-part">
+          <i class="far fa-heart under-post"></i>
+          <i class="fas fa-arrow-up under-post"></i>
+          <span *ngIf="post.author?.username === accountName" class="editPostBtnArea">
+            <a data-toggle="collapse" class="editCommentBtn" href="#id{{post._id}}" role="button" aria-expanded="false" attr.aria-controls="collapseExample">
+              <i class="fas fa-pencil-alt under-post left"></i>
+            </a>
+          </span>
+          <div class="collapse" id="id{{post._id}}">
+            <div class="sH9wk">
+              <form id="commentArea">
+                <textarea aria-label="Edit a post…" name="editArea" [(ngModel)]="post.newPost" placeholder="Edit this post…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+                <button type="submit" class="commentBtn" (click)="editPost(post.newPost, post._id)"><i class="fas fa-arrow-circle-up"></i></button>
+              </form>
+            </div>
+          </div>
         <div class="card-body post-body">
           <p class="card-text">{{post?.body}}</p>
           <p><b>Time</b>: {{post?.date}}</p>
