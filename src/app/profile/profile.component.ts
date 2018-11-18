@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { ProfileService } from './profile.service';
 import { Router } from '@angular/router';
+import { element } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ export class ProfileComponent implements OnInit {
   password1Text: string;
   password2Text: string;
   birthRestrict: Date;
+  avatarNew;
 
   constructor(private profileService: ProfileService) {
    }
@@ -79,5 +81,27 @@ export class ProfileComponent implements OnInit {
         });
       }
     }
+  }
+
+  handleImageChange($event: any) {
+    if (!$event.target.files) {
+      return;
+    }
+
+    if ($event.target.files.length > 0) {
+      const img = $event.target.files[0];
+      this.avatarNew = img;
+      const name = $event.target.files[0].name;
+      document.getElementById('fileName').textContent = name;
+      return;
+    }
+  }
+
+  updateImage() {
+    const avatar = new FormData();
+    avatar.append('image', this.avatarNew);
+    this.profileService.updateAvatar(avatar).subscribe((res) => {
+      this.userAvatar = res.avatar;
+    });
   }
 }

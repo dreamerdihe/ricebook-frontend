@@ -45,4 +45,7 @@ export class ProfileService {
     return this.http.put<any>(this.backendUrl + 'password', {password: password}, {withCredentials: true});
   }
 
+  updateAvatar(avatar: FormData) {
+    return this.http.put<any>(this.backendUrl + 'avatar', avatar, {withCredentials: true});
+  }
 }
