@@ -18,6 +18,8 @@ export class PostsComponent implements OnChanges {
   myArticles = 0;
   articles: any[] = [];
   newText: string;
+  newImg;
+  post: FormData;
   isSearch = true;
   searchFor: string;
   searchResults: any[] = [];
@@ -45,11 +47,29 @@ export class PostsComponent implements OnChanges {
     });
   }
 
+  handleImageChange($event: any) {
+    if (!$event.target.files) {
+      return;
+    }
+
+    if ($event.target.files.length > 0) {
+      const img = $event.target.files[0];
+      this.newImg = img;
+      const name = $event.target.files[0].name;
+      document.getElementById('postFileName').textContent = name;
+      return;
+    }
+  }
+
   Post(dirty) {
     if (dirty) {
-      this.postService.postPost(this.newText).subscribe((res) => {
+      const post = new FormData();
+      post.append('text', this.newText);
+      post.append('image', this.newImg);
+      this.postService.postPost(post).subscribe((res) => {
         this.articles = res.articles;
       });
+      this.newText = undefined;
     }
   }
 

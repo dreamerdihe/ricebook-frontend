@@ -7,11 +7,8 @@
       </div>
       <div class="input-group mb-3" id="img">
         <div class="custom-file">
-          <input type="file" class="custom-file-input" name="newImg" id="inputGroupFile02">
-          <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose an Image</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+          <input type="file" class="custom-file-input" name="newImg" id="inputGroupFile02" accept="image/*" (change)="handleImageChange($event)">
+          <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02" id="postFileName">Choose an Image</label>
         </div>
       </div>
       <button type="reset" class="btn btn-outline-dark" id="reset">Cancel</button>
