@@ -13,8 +13,8 @@ export class PostsService {
     return this.http.get<any>(this.backendUrl + 'articles', {withCredentials: true});
   }
 
-  postPost(text: String): Observable<any> {
-    return this.http.post<any>(this.backendUrl + 'article', {text: text}, {withCredentials: true});
+  postPost(post: FormData): Observable<any> {
+    return this.http.post<any>(this.backendUrl + 'article', post, {withCredentials: true});
   }
 
   comment(text: String, id: String): Observable<any> {
