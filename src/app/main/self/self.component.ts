@@ -32,6 +32,7 @@ export class SelfComponent implements OnInit {
       this.selfService.updateHeadline(this.headlineText).subscribe((res) => {
         this.headline = res.headline;
       });
+      this.headlineText = undefined;
     }
   }
 
