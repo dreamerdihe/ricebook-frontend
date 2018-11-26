@@ -37,3 +37,36 @@
 #avatar {
   text-align: center;
 }
+
+.fa-github {
+  font-size: 23px;
+}
+
+.fa-plus {
+  font-size: 20px;
+  float: right;
+  color:  #262626;
+}
+
+.fa-minus {
+  font-size: 20px;
+  float: right;
+  color:  #262626;
+}
+
+.fa-exclamation {
+  font-size: 10px;
+  margin-left: 10px;
+  margin-top:auto;
+  margin-bottom: auto;
+  float: right;
+}
+
+#linkBtn {
+  font-size: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: 0;
+  float: right;
+}
+

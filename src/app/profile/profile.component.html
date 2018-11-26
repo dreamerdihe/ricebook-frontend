@@ -18,12 +18,71 @@
             </div>
           </div>
           <ul class="list-group">
-            <li class="list-group-item"><b>Account Name</b>: {{userAccountName}}</li>
+            <li class="list-group-item">
+              <b>Account Name</b>:<span class="profileContent"> {{userAccountName}}</span>
+              <button [disabled]="!canLink" type="button" id="linkBtn" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@link">Link Account</button>
+            </li>
+            <div >
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <div class="modal-title" id="exampleModalLabel">
+                        <h5 >Link your account</h5>
+                        Do you have already had a rice book account? If yes, you can link with it without lossing your two account's data
+                      </div>
+                      <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form (ngSubmit)="linkSubmit(logForm.valid)" #logForm="ngForm">
+                        <div class='form-group'>
+                          <label for="uname">Username: </label>
+                          <input type="text" id="uname" class="form-control" name="uname" [(ngModel)]="username" #uname=ngModel required>
+                            <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert alert-danger">
+                              <div *ngIf="uname?.errors.required">
+                                Account Name is required.
+                              </div>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                          <label for="upass">Password: </label>
+                          <input type="password" id="upass" class="form-control" name="upass" [(ngModel)]="password" #upass=ngModel required>
+                          <div *ngIf="upass.invalid && (upass.dirty || upass.touched)" class="alert alert-danger">
+                            <div *ngIf="upass?.errors.required">
+                                Password is required.
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id='loginBtn'>Link now</button>
+                        <div *ngIf="isSubmit">
+                          <div *ngIf="isLogin !== undefined">
+                              <div *ngIf="!isLogin" class="alert alert-danger" id="login-error">
+                                  The username or password is incorrect
+                                </div>
+                                <div *ngIf="isLogin" class="alert alert-success" id="login-success">
+                                  link account success!
+                                </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!--<li class="list-group-item"><b>Display Name: {{user?.displayName}}</li>-->
-            <li class="list-group-item"><b>Email:</b> {{userEmail}}</li>
-            <li class="list-group-item"><b>Phone Number</b>: {{userPhoneNumber}}</li>
-            <li class="list-group-item"><b>Date of Birth</b>: {{userDob}}</li>
-            <li class="list-group-item"><b>Zipcode</b>: {{userZipcode}}</li>
+            <li class="list-group-item"><b>Email:</b> <span class="profileContent">{{userEmail}}</span></li>
+            <li class="list-group-item"><b>Phone Number</b>: <span class="profileContent">{{userPhoneNumber}}</span></li>
+            <li class="list-group-item"><b>Date of Birth</b>: <span class="profileContent">{{userDob}}</span></li>
+            <li class="list-group-item"><b>Zipcode</b>: <span class="profileContent">{{userZipcode}}</span></li>
+            <li class="list-group-item">
+            <i class="fab fa-github"></i> :
+              <span *ngIf="github" class="profileContent">{{githubAccount}}</span>
+              <a *ngIf="github" ><i class="fas fa-minus"></i></a>
+              <a *ngIf="!github" href="http://localhost:3000/login/github"><i class="fas fa-plus"></i></a>
+            </li>
             <!--<li class="list-group-item"><b>Password: {{user?.password}}</li>-->
           </ul>
         </div>

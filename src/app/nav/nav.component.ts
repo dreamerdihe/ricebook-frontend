@@ -14,9 +14,7 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.navService.logout()
-    .subscribe(res => {
-      localStorage.clear();
-    });
+    .subscribe();
   }
 
 }

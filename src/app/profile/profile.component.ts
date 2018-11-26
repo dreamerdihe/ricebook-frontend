@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { ProfileService } from './profile.service';
 import { Router } from '@angular/router';
-import { element } from '@angular/core/src/render3/instructions';
+
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from './profile.service';
+import { NavService } from '../nav/nav.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +16,9 @@ export class ProfileComponent implements OnInit {
   userPhoneNumber: String;
   userDob: String;
   userZipcode: String;
+  thirdParty = false;
+  github = false;
+  githubAccount = String;
 
   displayNameText: string;
   emailText: string;
@@ -26,7 +29,13 @@ export class ProfileComponent implements OnInit {
   birthRestrict: Date;
   avatarNew;
 
-  constructor(private profileService: ProfileService) {
+  canLink: boolean;
+  username: String;
+  password: String;
+  isLogin: boolean;
+  isSubmit = false;
+
+  constructor(private router: Router, private profileService: ProfileService, private navService: NavService) {
    }
 
   ngOnInit() {
@@ -53,6 +62,24 @@ export class ProfileComponent implements OnInit {
 
     this.profileService.getZipcode().subscribe((res: any) => {
       this.userZipcode = res.zipcode;
+    });
+
+    this.profileService.getThirdParty().subscribe((res: any) => {
+      const thirdParty = res.thirdParty;
+      this.canLink = res.canLink;
+      console.log(this.canLink);
+      if (thirdParty === null || thirdParty.length === 0) {
+        return;
+      } else {
+        this.thirdParty = true;
+        for (const link of thirdParty) {
+          if (link.party === 'github') {
+            this.github = true;
+            this.githubAccount = link.username;
+          }
+        }
+        return;
+      }
     });
   }
 
@@ -102,6 +129,30 @@ export class ProfileComponent implements OnInit {
     avatar.append('image', this.avatarNew);
     this.profileService.updateAvatar(avatar).subscribe((res) => {
       this.userAvatar = res.avatar;
+    });
+  }
+
+  linkSubmit(valid) {
+    console.log('here');
+    if (valid) {
+      this.link(this.username, this.password);
+    }
+    this.isSubmit = true;
+  }
+
+  link(username: String, password: String) {
+    return this.profileService.link(username, password).subscribe((res) => {
+      this.isLogin = res;
+      setTimeout(() => {
+        document.getElementById('close').click();
+        this.router.navigate(['/landing']);
+        }, 500);
+
+    },
+    err => {
+      if (err.status === 403 || 404) {
+        this.isLogin = false;
+      }
     });
   }
 }
