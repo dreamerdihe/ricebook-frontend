@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SelfService {
-  backendUrl = 'https://ricebook-yh.herokuapp.com/';
+  backendUrl = 'http://localhost:3000/';
   constructor(private http: HttpClient) { }
 
   getHeadline(): Observable<any> {

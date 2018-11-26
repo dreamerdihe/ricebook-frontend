@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  backendUrl = 'https://ricebook-yh.herokuapp.com/';
+  backendUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
@@ -21,5 +21,9 @@ export class LoginService {
       }
     })
     );
+  }
+
+  github(): Observable<any> {
+    return this.http.get<any>(this.backendUrl + 'login/github', {withCredentials: true});
   }
 }
