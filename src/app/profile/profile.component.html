@@ -20,7 +20,7 @@
           <ul class="list-group">
             <li class="list-group-item">
               <b>Account Name</b>:<span class="profileContent"> {{userAccountName}}</span>
-              <button [disabled]="!canLink" type="button" id="linkBtn" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@link">Link Account</button>
+              <button [disabled]="!canLink" type="button" class="btn btn-outline-dark linkBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@link">Link Account</button>
             </li>
             <div >
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,8 +80,8 @@
             <li class="list-group-item">
             <i class="fab fa-github"></i> :
               <span *ngIf="github" class="profileContent">{{githubAccount}}</span>
-              <a *ngIf="github" ><i class="fas fa-minus"></i></a>
-              <a *ngIf="!github" href="http://localhost:3000/login/github"><i class="fas fa-plus"></i></a>
+              <button *ngIf="github" [disabled]="canLink" type="button" class="btn btn-outline-dark linkBtn" (click)="unlinkGithub()">Unlink</button>
+              <a *ngIf="!github"  href="http://localhost:3000/link/github" class="btn btn-outline-dark linkBtn">Link</a>
             </li>
             <!--<li class="list-group-item"><b>Password: {{user?.password}}</li>-->
           </ul>

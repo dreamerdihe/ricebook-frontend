@@ -67,7 +67,6 @@ export class ProfileComponent implements OnInit {
     this.profileService.getThirdParty().subscribe((res: any) => {
       const thirdParty = res.thirdParty;
       this.canLink = res.canLink;
-      console.log(this.canLink);
       if (thirdParty === null || thirdParty.length === 0) {
         return;
       } else {
@@ -152,6 +151,27 @@ export class ProfileComponent implements OnInit {
     err => {
       if (err.status === 403 || 404) {
         this.isLogin = false;
+      }
+    });
+  }
+
+  unlinkGithub() {
+    console.log('unlink');
+    this.profileService.unlinkGithub().subscribe((res: any) => {
+      const thirdParty = res.thirdParty;
+      this.github = false;
+      this.githubAccount = undefined;
+      if (thirdParty === null || thirdParty.length === 0) {
+        return;
+      } else {
+        this.thirdParty = true;
+        for (const link of thirdParty) {
+          if (link.party === 'github') {
+            this.github = true;
+            this.githubAccount = link.username;
+          }
+        }
+        return;
       }
     });
   }

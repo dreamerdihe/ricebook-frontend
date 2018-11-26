@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ObserveOnSubscriber } from 'rxjs/internal/operators/observeOn';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class ProfileService {
       }
     })
     );
+  }
+
+  unlinkGithub(): Observable<any> {
+    return this.http.put<any>(this.backendUrl + 'unlink/gitub', {}, {withCredentials: true});
   }
 
   getAvatar(): Observable<any> {
