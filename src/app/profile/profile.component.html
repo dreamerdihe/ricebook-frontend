@@ -29,7 +29,7 @@
                     <div class="modal-header">
                       <div class="modal-title" id="exampleModalLabel">
                         <h5 >Link your account</h5>
-                        Do you have already had a rice book account? If yes, you can link with it without lossing your two account's data
+                        Do you have already had a ricebook account? If yes, you can link with it without lossing your two accounts' data
                       </div>
                       <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -81,7 +81,6 @@
             <i class="fab fa-github"></i> :
               <span *ngIf="github" class="profileContent">{{githubAccount}}</span>
               <button *ngIf="github" [disabled]="canLink" type="button" class="btn btn-outline-dark linkBtn" (click)="unlinkGithub()">Unlink</button>
-              <a *ngIf="!github"  href="http://localhost:3000/link/github" class="btn btn-outline-dark linkBtn">Link</a>
             </li>
             <!--<li class="list-group-item"><b>Password: {{user?.password}}</li>-->
           </ul>

@@ -93,39 +93,29 @@ export class PostsComponent implements OnChanges {
     }
   }
 
-  comment(text: String, id: String) {
+  comment(text: String, id: String, post: any) {
     if (text === undefined || text.length < 1) {
       return;
     }
       this.postService.comment(text, id).subscribe((res) => {
-      this.articles = res.articles;
-      for (const article of this.articles) {
-        this.mainService.getAvatar([article.author.id]).subscribe((result) => {
-          article.author.avatar = result.avatar[0].avatar;
-        });
-      }
+      post.comments.push(res.comment);
+      post.newComment = undefined;
     });
   }
 
-  editComment(text: String, postId: String, commentId: String) {
+  editComment(text: String, postId: String, commentId: String, comment: any) {
     this.postService.editComment(text, postId, commentId).subscribe((res) => {
-      this.articles = res.articles;
-      for (const article of this.articles) {
-        this.mainService.getAvatar([article.author.id]).subscribe((result) => {
-          article.author.avatar = result.avatar[0].avatar;
-        });
-      }
+      comment.body = res.comment.body;
+      comment.date = res.comment.date;
+      comment.newComment = undefined;
     });
   }
 
-  editPost(text: String, postId: String) {
+  editPost(text: String, postId: String, post: any) {
     this.postService.editPost(text, postId).subscribe((res) => {
-      this.articles = res.articles;
-      for (const article of this.articles) {
-        this.mainService.getAvatar([article.author.id]).subscribe((result) => {
-          article.author.avatar = result.avatar[0].avatar;
-        });
-      }
+      post.body = res.post.body;
+      post.date = res.post.date;
+      post.newPost = undefined;
     });
   }
 

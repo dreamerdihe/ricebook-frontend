@@ -84,7 +84,7 @@
               <div class="sH9wk">
                 <form id="commentArea">
                   <textarea aria-label="Edit a post…" name="editArea" [(ngModel)]="post.newPost" placeholder="Edit this post…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
-                  <button type="submit" class="commentBtn" (click)="editPost(post.newPost, post._id)"><i class="fas fa-arrow-circle-up"></i></button>
+                  <button type="submit" class="commentBtn" (click)="editPost(post.newPost, post._id, post)"><i class="fas fa-arrow-circle-up"></i></button>
                 </form>
               </div>
             </div>
@@ -104,7 +104,7 @@
                 <div class="sH9wk">
                   <form id="commentArea">
                     <textarea aria-label="Edit a comment…" name="commentArea" [(ngModel)]="comment.newComment" placeholder="Edit this comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
-                    <button type="submit" class="commentBtn" (click)="editComment(comment.newComment, post._id, comment._id)"><i class="far fa-comment-alt"></i></button>
+                    <button type="submit" class="commentBtn" (click)="editComment(comment.newComment, post._id, comment._id, comment)"><i class="far fa-comment-alt"></i></button>
                   </form>
                 </div>
               </div>
@@ -114,7 +114,7 @@
           <div class="sH9wk">
             <form id="commentArea">
               <textarea aria-label="Add a comment…" name="commentArea" [(ngModel)]="post.newComment" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;" required></textarea>
-              <button type="submit" class="commentBtn" (click)="comment(post.newComment, post._id)"><i class="far fa-comment-alt"></i></button>
+              <button type="submit" class="commentBtn" (click)="comment(post.newComment, post._id, post)"><i class="far fa-comment-alt"></i></button>
             </form>
           </div>
         </div>
