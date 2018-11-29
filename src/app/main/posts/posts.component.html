@@ -43,7 +43,7 @@
         </div>
         <div class="card-body search-body">
           <p class="card-text search-res">{{result?.body}}</p>
-          <p><b>Time</b>: {{result?.date}}</p>
+          <p class="time">{{result?.date | timeAgo}}</p>
           <div *ngFor="let comment of result.comments">
             <b>{{comment.author}}</b>  {{comment.body}}
           </div>
@@ -72,9 +72,7 @@
           <img class="card-img-top" src="{{post?.picture}}">
         </div>
         <div class="card-body post-body main-part">
-
-          <p class="card-text">{{post?.body}}</p>
-          <div class="function-part">
+                  <div class="function-part">
             <i class="far fa-heart under-post"></i>
             <i class="fas fa-arrow-up under-post"></i>
             <span *ngIf="post.author?.username === accountName" class="editPostBtnArea">
@@ -91,7 +89,7 @@
               </div>
             </div>
           </div>
-          <p><b>Time</b>: {{post?.date}}</p>
+          <p class="card-text">{{post?.body}}</p>
           <div *ngFor="let comment of post.comments">
             <span>
               <b>{{comment.author}}</b>  {{comment.body}}
@@ -112,9 +110,10 @@
               </div>
             </span>
           </div>
+           <p class="time">{{post?.date | timeAgo}}</p>
           <div class="sH9wk">
             <form id="commentArea">
-              <textarea aria-label="Add a comment…" name="commentArea" [(ngModel)]="post.newComment" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+              <textarea aria-label="Add a comment…" name="commentArea" [(ngModel)]="post.newComment" placeholder="Add a comment…" class="Ypffh" autocomplete="off" autocorrect="off" style="height: 18px;" required></textarea>
               <button type="submit" class="commentBtn" (click)="comment(post.newComment, post._id)"><i class="far fa-comment-alt"></i></button>
             </form>
           </div>

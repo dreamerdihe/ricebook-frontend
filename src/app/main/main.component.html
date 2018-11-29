@@ -2,11 +2,11 @@
 <div class="container" id="main-container">
 
   <div class=' row col-12'>
-    <div class='part-container col-sm-8'>
+    <div class='part-container left col-sm-8'>
       <app-posts [followers]='followings'></app-posts>
     </div>
 
-    <div class='part-container col-sm-4'>
+    <div class='part-container right col-sm-4'>
       <app-self></app-self>
       <app-following [followers]='followings' [currentUser]='username' (add)='addFriend($event)' (delete)='removeFriend($event)'></app-following>
     </div>

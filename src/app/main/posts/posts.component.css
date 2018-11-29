@@ -1,3 +1,7 @@
+button {
+  cursor: pointer;
+}
+
 .article {
   margin-top: 20px;
   margin-left: 30px;
@@ -15,6 +19,10 @@
   margin-top: 20px;
   margin-left: 30px;
   margin-bottom: 30px;
+}
+
+#keyword {
+  text-align: center;
 }
 
 textarea {
@@ -44,7 +52,7 @@ textarea {
     color: #262626;
     height: 18px;
     max-height: 80px;
-    width: 570px;
+    /* width: 570px; */
     outline: 0;
     padding: 0;
     resize: none;
@@ -59,7 +67,6 @@ textarea {
   height: 20px;
   color: rgb(52, 58, 64);
   margin:0;
-  margin-right: 4px;
   float: right;
 }
 
@@ -100,9 +107,13 @@ textarea {
   background-color: white;
 }
 
-.function-part {
+.main-part {
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.function-part {
+  margin-bottom: 10px;
 }
 
 .under-post {
@@ -138,3 +149,9 @@ textarea {
   width: 21px;
 }
 
+.time {
+  color: #999;
+  font-size: 13px;
+  margin: 0;
+  margin-top: 2px;
+}

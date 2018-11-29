@@ -38,6 +38,7 @@ export class PostsComponent implements OnChanges {
       offset = 0;
     }
     this.postService.getPosts(offset).subscribe((res) => {
+      this.accountName = res.username;
       if (this.isScroll) {
         this.articles = this.articles.concat(res.articles);
         this.isScroll = false;
@@ -60,7 +61,6 @@ export class PostsComponent implements OnChanges {
   }
 
   onScroll() {
-    console.log(this.offset);
     this.offset ++;
     this.isScroll = true;
     this.getPosts_();
@@ -94,6 +94,9 @@ export class PostsComponent implements OnChanges {
   }
 
   comment(text: String, id: String) {
+    if (text === undefined || text.length < 1) {
+      return;
+    }
       this.postService.comment(text, id).subscribe((res) => {
       this.articles = res.articles;
       for (const article of this.articles) {

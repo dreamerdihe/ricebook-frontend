@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { IsValidBirthDay } from './birthday.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -38,7 +39,8 @@ export const routes: Routes = [
     ProfileComponent,
     IsValidBirthDay,
     SelfComponent,
-    NavComponent
+    NavComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,

@@ -8,3 +8,11 @@
 .part-container {
   margin-top: 50px;
 }
+
+.left {
+  padding-left: 70px;
+
+}
+.right {
+  padding-right: 70px;
+}
