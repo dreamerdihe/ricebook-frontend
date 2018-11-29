@@ -9,12 +9,12 @@ export class PostsService {
   backendUrl = 'http://localhost:3000/';
   constructor(private http: HttpClient) {}
 
-  getPosts(): Observable<any> {
-    return this.http.get<any>(this.backendUrl + 'articles', {withCredentials: true});
+  getPosts(offset: Number): Observable<any> {
+    return this.http.get<any>(this.backendUrl + 'articles/' + offset, {withCredentials: true});
   }
 
   postPost(post: FormData): Observable<any> {
-    return this.http.post<any>(this.backendUrl + 'article', post, {withCredentials: true});
+    return this.http.post<any>(this.backendUrl + 'articles', post, {withCredentials: true});
   }
 
   comment(text: String, id: String): Observable<any> {

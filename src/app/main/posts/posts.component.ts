@@ -12,8 +12,9 @@ import { Follower } from '../follower';
 })
 export class PostsComponent implements OnChanges {
   @Input() followers: Follower[];
-  @Input() length: number;
-  @Input() accountName: string;
+  accountName: string;
+  offset = 0;
+  isScroll = false;
   keyword: string;
   myArticles = 0;
   articles: any[] = [];
@@ -27,17 +28,28 @@ export class PostsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    this.offset = 0;
     this.getPosts_();
   }
 
   getPosts_() {
-    this.postService.getPosts().subscribe((res) => {
-      this.articles = res.articles;
+    let offset = this.offset;
+    if (!this.isScroll) {
+      offset = 0;
+    }
+    this.postService.getPosts(offset).subscribe((res) => {
+      if (this.isScroll) {
+        this.articles = this.articles.concat(res.articles);
+        this.isScroll = false;
+      } else {
+        this.articles = res.articles;
+      }
       for (const article of this.articles) {
         this.mainService.getAvatar([article.author.id]).subscribe((result) => {
           article.author.avatar = result.avatar[0].avatar;
         });
       }
+
     },
     err => {
       if (err.status === 401) {
@@ -45,6 +57,13 @@ export class PostsComponent implements OnChanges {
         this.router.navigate(['/landing']);
       }
     });
+  }
+
+  onScroll() {
+    console.log(this.offset);
+    this.offset ++;
+    this.isScroll = true;
+    this.getPosts_();
   }
 
   handleImageChange($event: any) {
@@ -62,6 +81,7 @@ export class PostsComponent implements OnChanges {
   }
 
   Post(dirty) {
+    this.offset = 0;
     if (dirty) {
       const post = new FormData();
       post.append('text', this.newText);
