@@ -128,11 +128,11 @@ export class ProfileComponent implements OnInit {
     avatar.append('image', this.avatarNew);
     this.profileService.updateAvatar(avatar).subscribe((res) => {
       this.userAvatar = res.avatar;
+      document.getElementById('fileName').textContent = 'Choose file';
     });
   }
 
   linkSubmit(valid) {
-    console.log('here');
     if (valid) {
       this.link(this.username, this.password);
     }
@@ -156,7 +156,6 @@ export class ProfileComponent implements OnInit {
   }
 
   unlinkGithub() {
-    console.log('unlink');
     this.profileService.unlinkGithub().subscribe((res: any) => {
       const thirdParty = res.thirdParty;
       this.github = false;
