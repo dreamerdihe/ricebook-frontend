@@ -81,15 +81,21 @@ export class PostsComponent implements OnChanges {
   }
 
   Post(dirty) {
-    this.offset = 0;
     if (dirty) {
       const post = new FormData();
       post.append('text', this.newText);
       post.append('image', this.newImg);
       this.postService.postPost(post).subscribe((res) => {
         this.articles = res.articles;
+        for (const article of this.articles) {
+          this.mainService.getAvatar([article.author.id]).subscribe((result) => {
+            article.author.avatar = result.avatar[0].avatar;
+          });
+        }
+        document.getElementById('postFileName').textContent = 'Choose an Image';
+        document.getElementById('reset').click();
+        this.offset = 0;
       });
-      this.newText = undefined;
     }
   }
 
