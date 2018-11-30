@@ -9,3 +9,17 @@
 .card {
   padding: 10px;
 }
+
+.BtnBoard {
+  margin-top:20px;
+  border-top: 1px solid #efefef;
+}
+
+.fa-github {
+  font-size: 20px;
+}
+
+.btn-social {
+  margin-top: 10px;
+  color: black;
+}

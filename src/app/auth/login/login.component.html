@@ -21,7 +21,6 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary" id='loginBtn'>Log in</button>
-      <a href="http://localhost:3000/login/github" class="btn btn-default">Github</a>
       <div *ngIf="isSubmit">
         <div *ngIf="isLogin !== undefined">
             <div *ngIf="!isLogin" class="alert alert-danger" id="login-error">
@@ -33,6 +32,11 @@
         </div>
       </div>
     </form>
+    <div class="BtnBoard">
+    <a class="btn btn-block btn-social btn-github" href="http://localhost:3000/login/github">
+      <span class="fab fa-github fa-sm"></span> Sign in with Github
+    </a>
+    </div>
 </div>
 </div>
 

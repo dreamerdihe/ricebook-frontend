@@ -8,13 +8,12 @@ import { ObserveOnSubscriber } from 'rxjs/internal/operators/observeOn';
   providedIn: 'root'
 })
 export class ProfileService {
-  backendUrl = 'http://localhost:3000/';
+  backendUrl = ' https://ricebook-yh.herokuapp.com/';
   constructor(private http: HttpClient) {}
 
   link(username: String, password: String) {
     return this.http.post<any>(this.backendUrl + 'merge', {username: username, password: password}, {withCredentials: true})
     .pipe(map(res => {
-      console.log(res);
       if (res) {
         return true;
       } else {

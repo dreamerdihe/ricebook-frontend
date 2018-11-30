@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MainService {
-  backendUrl = 'http://localhost:3000/';
+  backendUrl = ' https://ricebook-yh.herokuapp.com/';
   constructor(private http: HttpClient) { }
 
   getFollowing(): Observable<any> {
