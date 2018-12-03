@@ -1,4 +1,5 @@
 # [Ricebook](http://ricebook-yh.surge.sh/#/landing)
+Please use chrome view the page.
 
 ## Description:
 This project is a simple social media web application. User could register a new account or login existed account to share their lives.
